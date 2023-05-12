@@ -1,10 +1,11 @@
 #include "Database.hpp"
 #include <fmt/core.h>
 
-Database::Database(std::string)
+Database::Database(std::string createTable) : conn(DatabaseCommands::startConnection.c_str()),work(conn)
 {
+     work.exec(createTable.c_str());
 
-    std::cout << DatabaseCommands::createTable;
+    //std::cout << DatabaseCommands::createTable;
 }
 
 Database &Database::getInstance()
@@ -17,6 +18,7 @@ Database &Database::getInstance()
 void Database::insertElement(int id, std::string value)
 {
     auto command = fmt::format(DatabaseCommands::insertElement, id, value);
+    work.exec(command.c_str());
     std::cout << command << " \n";
 }
 

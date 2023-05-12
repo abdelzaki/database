@@ -15,13 +15,13 @@ FetchContent_Declare(
   GIT_TAG 7.7.5
   GIT_SHALLOW TRUE
 )
-set(PQXX_LIBRARIES pqxx_static)
+#set(PQXX_LIBRARIES pqxx_static)
 
 FetchContent_MakeAvailable(libpqxx)
 
 
 
 add_executable(${PROJECT_NAME} main.cpp Database.cpp SqlCommands.cpp)
-target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt  "${PQXX_LIBRARIES}")
+target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt  -lpqxx)
 target_include_directories(${PROJECT_NAME}  PUBLIC ./)
 target_include_directories(${PROJECT_NAME}  PUBLIC ./)

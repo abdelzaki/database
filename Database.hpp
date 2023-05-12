@@ -4,7 +4,9 @@
 
 #include <string>
 #include <iostream>
+#include<pqxx/pqxx>
 #include "SqlCommands.hpp"
+#include<functional>
 
 
 /// @brief 
@@ -41,8 +43,10 @@ private:
     /// @brief 
     /// @param  
     Database(std::string);
-    //static Database instance;
 
+    //static Database instance;
+    pqxx::connection conn;
+    pqxx::work work;
     // Delete copy and move operator also copy and move constructor to be able to implement singelton 
     Database(Database&) =delete;
     Database(Database&&) = delete;
