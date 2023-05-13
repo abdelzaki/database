@@ -18,30 +18,42 @@ void Database::insertElement(int id, std::string value)
 {
     auto command = fmt::format(SqlCommands::insertElement, id, value);
     work.exec(command.c_str());
+    #if (debug)
     std::cout << command << " \n";
+    #endif
 }
 
 void Database::updateElement(int id, std::string value)
 {
     auto command = fmt::format(SqlCommands::updateElement, id, value);
-    std::cout << command << "\n";
+    work.exec(command.c_str());
+    #if (debug)
+    std::cout << command << " \n";
+    #endif
 }
 
 std::string Database::getElement(int id)
 {
     auto command = fmt::format(SqlCommands::findElement, id);
+    work.exec(command.c_str());
     std::cout << command << "\n";
-    return command;
+    #if (debug)
+    std::cout << command << " \n";
+    #endif
 }
 
 void Database::removeElement(int id)
 {
     auto command = fmt::format(SqlCommands::removeElement, id);
-    std::cout << command << "\n";
+    #if (debug)
+    std::cout << command << " \n";
+    #endif
 }
 
 void Database::deleteTable(std::string table)
 {
     auto command = fmt::format(SqlCommands::deleteTable, table);
-    std::cout << command << "\n";
+    #if (debug)
+    std::cout << command << " \n";
+    #endif
 }
