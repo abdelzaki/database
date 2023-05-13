@@ -16,7 +16,7 @@ Database &Database::getInstance()
 }
 
 void Database::insertElement(int id, std::string value)
-{
+{   
     auto command = fmt::format(DatabaseCommands::insertElement, id, value);
     work.exec(command.c_str());
     std::cout << command << " \n";
