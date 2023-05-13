@@ -38,6 +38,7 @@ public:
    /// @param taböe 
    void deleteTable(std::string table);
 
+    enum MTV
 
 private:
     /// @brief 
@@ -56,5 +57,5 @@ private:
 
 };
 
-
+enum class MTV_ROW{ ID, TEXT };
 #endif
