@@ -45,7 +45,7 @@ private:
     Database(std::string);
 
     //static Database instance;
-    pqxx::connection conn;
+    pqxx::connection connection;
     pqxx::work work;
     // Delete copy and move operator also copy and move constructor to be able to implement singelton 
     Database(Database&) =delete;
