@@ -10,7 +10,7 @@ std::string SqlCommands::createTable  = R"( CREATE TABLE IF NOT EXISTS MTV (ID I
 
 std::string SqlCommands::insertElement  = R"(INSERT INTO MTV (ID,NAME) VALUES ({}, '{}');)";
 
-std::string SqlCommands::updateElement  = R"(UPDATE MTV set NAME = '{}' where ID={};)";
+std::string SqlCommands::updateElement  = R"(UPDATE MTV  set NAME = '{}'  WHERE ID={};)";
 
 std::string SqlCommands::findElement  = R"(SELECT NAME from MTV WHERE ID={};)";
 

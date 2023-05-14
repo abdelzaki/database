@@ -8,7 +8,7 @@
 #include "SqlCommands.hpp"
 #include<functional>
 
-
+enum class MTV_ROW{ ID, TEXT };
 /// @brief 
 class Database{
 
@@ -38,16 +38,17 @@ public:
    /// @param taböe 
    void deleteTable(std::string table);
 
-    enum MTV
+
 
 private:
     /// @brief 
     /// @param  
     Database(std::string);
+    void performExecuteCommand(std::string command);
 
     //static Database instance;
     pqxx::connection connection;
-    pqxx::work work;
+   // pqxx::work work;
     // Delete copy and move operator also copy and move constructor to be able to implement singelton 
     Database(Database&) =delete;
     Database(Database&&) = delete;
@@ -57,5 +58,5 @@ private:
 
 };
 
-enum class MTV_ROW{ ID, TEXT };
+
 #endif
