@@ -6,7 +6,7 @@
 #include <iostream>
 #include<pqxx/pqxx>
 #include "SqlCommands.hpp"
-#include<functional>
+
 
 enum class MTV_ROW{ ID, TEXT };
 /// @brief 
@@ -21,11 +21,11 @@ public:
    /// @brief 
    /// @param id 
    /// @param value 
-   void insertElement(int id, std::string value);
+   void insertElement(int id, const std::string& value);
    /// @brief 
    /// @param id 
    /// @param value 
-   void updateElement(int id, std::string value);
+   void updateElement(int id, const std::string& value);
    /// @brief 
    /// @param id 
    /// @return 
@@ -36,15 +36,20 @@ public:
    void removeElement(int id);
    /// @brief 
    /// @param taböe 
-   void deleteTable(std::string table);
+   void deleteTable(const std::string&  table);
 
 
 
 private:
     /// @brief 
     /// @param  
-    Database(std::string);
-    void performExecuteCommand(std::string command);
+    Database(const std::string& command);
+    /// @brief 
+    /// @param command 
+    void performExecuteCommand(const std::string& command);
+    /// @brief 
+    /// @param command 
+    void createConenction(const std::string&  command);
 
     //static Database instance;
     pqxx::connection connection;

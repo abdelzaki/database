@@ -1,21 +1,20 @@
-#include<iostream>
-#include<pqxx/pqxx>
-#include<string>
-#include "Database.hpp"
+/* std libraries */
+#include <iostream>
+#include <string>
+/* Third Party libraries */
+#include <pqxx/pqxx>
 #include <fmt/core.h>
+/* project header */
+#include "Database.hpp"
 
-int main(){
-  int key = 3;
- std::cout << "Main 1\n";
-  Database::getInstance().insertElement(key,"insert");
-  std::cout << "Main 2\n";
-  Database::getInstance().getElement(key);
-  std::cout << "Main 3\n";
-  Database::getInstance().updateElement(key,"update");
-  std::cout << "Main 4\n";
-  //Database::getInstance().removeElement(5);
-  //Database::getInstance().deleteTable("5");
-
-
-  std::cout << "Main \n";
+int main()
+{
+  int key{100};
+  Database::getInstance().insertElement(key, "insert");
+  std::cout << "element before update" << Database::getInstance().getElement(key) << " \n";
+  Database::getInstance().updateElement(key, "update");
+  std::cout << "element after update" << Database::getInstance().getElement(key) << " \n";
+  Database::getInstance().removeElement(key);
+  std::cout << "element after remove " << Database::getInstance().getElement(key) << " \n";
+  // Database::getInstance().deleteTable("5");
 }
