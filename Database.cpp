@@ -1,42 +1,37 @@
 #include "Database.hpp"
 #include <fmt/core.h>
 
-Database::Database(const std::string&  command) : connection(SqlCommands::startConnection.c_str())
-{
-    createConenction(command)
-}
 
-void Database::createConenction(const std::string&  command)
+
+
+Database::Database(const std::string&  command) :  connection(SqlCommands::startConnection.c_str()) 
 {
-    if (connection.is_open())
-    {
-        try
-        {
-            auto command = createTable.c_str();
-            performExecuteCommand(createTable);
-        }
-        catch (const std::exception &error)
-        {
-            std::cerr << error.what() << std::endl;
-        }
+
+
+    pqxx::work work(connection);
+    work.exec(command.c_str());
+    work.commit();
     }
-}
+    
 
-Database &Database::getInstance()
+
+
+
+Database& Database::getInstance()
 {
 
     static Database instance{SqlCommands::createTable};
-    if (!connection.is_open())
-        createConenction(SqlCommands::createTable) return instance;
+
+    return instance;
 }
 
-void Database::insertElement(int id, std::string value)
+void Database::insertElement(int id, const std::string& value)
 {
     auto command = fmt::format(SqlCommands::insertElement, id, value);
     performExecuteCommand(command);
 }
 
-void Database::updateElement(int id, std::string value)
+void Database::updateElement(int id, const std::string& value)
 {
     auto command = fmt::format(SqlCommands::updateElement, value, id);
     performExecuteCommand(command);
@@ -49,13 +44,15 @@ std::string Database::getElement(int id)
     {
         pqxx::work work(connection);
         pqxx::result result = work.exec(command.c_str());
-        std::cout << command << "\n";
+        
         return result.at(0)["NAME"].c_str();
     }
     catch (const std::exception &error)
     {
         std::cerr << error.what() << std::endl;
+        return "NULL";
     }
+
 }
 
 void Database::removeElement(int id)
@@ -64,7 +61,7 @@ void Database::removeElement(int id)
     performExecuteCommand(command);
 }
 
-void Database::deleteTable(std::string table)
+void Database::deleteTable(const std::string& table)
 {
     auto command = fmt::format(SqlCommands::deleteTable, table);
     performExecuteCommand(command);

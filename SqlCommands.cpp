@@ -16,4 +16,4 @@ std::string SqlCommands::findElement  = R"(SELECT NAME from MTV WHERE ID={};)";
 
 std::string SqlCommands::removeElement = R"(DELETE FROM MTV WHERE ID={};)";
 
-std::string SqlCommands::deleteTable = R"(DELETE FROM MTV WHERE ID={};)";
+std::string SqlCommands::deleteTable = R"(DROP TABLE {};)";

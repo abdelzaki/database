@@ -41,19 +41,19 @@ public:
 
 
 private:
+   pqxx::connection connection;
     /// @brief 
     /// @param  
     Database(const std::string& command);
     /// @brief 
     /// @param command 
-    void performExecuteCommand(const std::string& command);
+    void  performExecuteCommand(const std::string& command);
     /// @brief 
     /// @param command 
-    void createConenction(const std::string&  command);
+    void static createConenction(const std::string&  command);
 
     //static Database instance;
-    pqxx::connection connection;
-   // pqxx::work work;
+    
     // Delete copy and move operator also copy and move constructor to be able to implement singelton 
     Database(Database&) =delete;
     Database(Database&&) = delete;

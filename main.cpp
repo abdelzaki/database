@@ -11,10 +11,10 @@ int main()
 {
   int key{100};
   Database::getInstance().insertElement(key, "insert");
-  std::cout << "element before update" << Database::getInstance().getElement(key) << " \n";
+  std::cout << "element after insert = " << Database::getInstance().getElement(key) << " \n";
   Database::getInstance().updateElement(key, "update");
-  std::cout << "element after update" << Database::getInstance().getElement(key) << " \n";
+  std::cout << "element after update = " << Database::getInstance().getElement(key) << " \n";
   Database::getInstance().removeElement(key);
-  std::cout << "element after remove " << Database::getInstance().getElement(key) << " \n";
-  // Database::getInstance().deleteTable("5");
+  std::cout << "element after remove = " << Database::getInstance().getElement(key) << "  \n";
+  Database::getInstance().deleteTable("MTV");
 }
