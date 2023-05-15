@@ -2,7 +2,6 @@
 
 MtvTable::MtvTable() : AbstractTable("MTV", SqlCommands::startConnection)
 {
-
 }
 
 void MtvTable::insertElement(int id, const std::string &value)
@@ -10,9 +9,10 @@ void MtvTable::insertElement(int id, const std::string &value)
     AbstractTable::insertElement(id, value);
 }
 
-void MtvTable::updateElement(int id, const std::string &value){
+void MtvTable::updateElement(int id, const std::string &value)
+{
     AbstractTable::updateElement(id, value);
-    }
+}
 
 std::string MtvTable::getElement(int id)
 {
@@ -24,9 +24,9 @@ void MtvTable::removeElement(int id)
     AbstractTable::removeElement(id);
 }
 
-void MtvTable::deleteTable(const std::string &table)
+void MtvTable::deleteTable()
 {
-    AbstractTable::deleteTable(table);
+    AbstractTable::deleteTable();
 }
 
 void MtvTable::performExecuteCommand(const std::string &command)

@@ -11,7 +11,7 @@ class AbstractTable
 {
 public:
     AbstractTable(const std::string &table);
-    AbstractTable(const std::string &table, std::string& connection);
+    AbstractTable(const std::string &table, std::string &connection);
     void virtual insertElement(int id, const std::string &value) = 0;
     /// @brief
     /// @param id
@@ -26,14 +26,12 @@ public:
     /// @param id
     void virtual removeElement(int id) = 0;
     /// @brief
-    /// @param taböe
-    void virtual deleteTable(const std::string &table) = 0;
+    /// @param 
+    void virtual deleteTable() = 0;
     virtual ~AbstractTable();
 
 protected:
     void virtual performExecuteCommand(const std::string &command) = 0;
     std::string tableName;
     pqxx::connection connection;
-    
-
 };

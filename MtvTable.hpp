@@ -14,7 +14,7 @@ public:
 
     void removeElement(int id);
 
-    void deleteTable(const std::string &table);
+    void deleteTable();
 
     void performExecuteCommand(const std::string &command);
 
@@ -22,5 +22,6 @@ public:
 
 private:
     MtvTable();
-    std::string tableName;;
+    std::string tableName;
+    ;
 };
