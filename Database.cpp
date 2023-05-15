@@ -1,9 +1,9 @@
 #include "Database.hpp"
 #include <fmt/core.h>
 
-Database::Database(const std::string &command) : connection(SqlCommands::startConnection.c_str())
+Database::Database(const std::string &command, const std::string& table) : connection(SqlCommands::startConnection.c_str())
 {
-
+    tableName = table;
     pqxx::work work(connection);
     work.exec(command.c_str());
     work.commit();
@@ -11,21 +11,21 @@ Database::Database(const std::string &command) : connection(SqlCommands::startCo
 
 Database &Database::getInstanceMtv_1()
 {       
-    tableName = "MTV_1";
-    auto command = fmt::format(SqlCommands::createTable, tableName);
+   
+    std::string table = "tablex";
+    auto command = fmt::format(SqlCommands::createTable, table);
+    static Database instance_1{command, table};
 
-    static Database instance_1{SqlCommands::createTable};
-
-    return instance;
+    return instance_1;
 }
 Database &Database::getInstanceMtv_2()
-{
-    tableName = "MTV_2";
-     auto command = fmt::format(SqlCommands::createTable, tableName);
+{   std::string table = "tabley";
+  
+     auto command = fmt::format(SqlCommands::createTable, table);
 
-    static Database instance_2{SqlCommands::createTable};
+    static Database instance_2{command, table};
 
-    return instance;
+    return instance_2;
 }
 
 void Database::insertElement(int id, const std::string &value)

@@ -9,12 +9,26 @@
 
 int main()
 {
-  int key{100};
-  Database::getInstance().insertElement(key, "insert");
-  std::cout << "element after insert = " << Database::getInstance().getElement(key) << " \n";
-  Database::getInstance().updateElement(key, "update");
-  std::cout << "element after update = " << Database::getInstance().getElement(key) << " \n";
-  Database::getInstance().removeElement(key);
-  std::cout << "element after remove = " << Database::getInstance().getElement(key) << "  \n";
-  Database::getInstance().deleteTable("MTV_1");
+  int key{99};
+
+  Database::getInstanceMtv_1().insertElement(key, "insert mtv1");
+  std::cout << "element after insert mtv1 = " << Database::getInstanceMtv_1().getElement(key) << " \n";
+  Database::getInstanceMtv_2().insertElement(key, "insert mtv2");
+  std::cout << "element after insert mtv2 = " << Database::getInstanceMtv_2().getElement(key) << " \n";
+
+
+  Database::getInstanceMtv_1().updateElement(key, "update mtv1");
+  std::cout << "element after update mtv1 = " << Database::getInstanceMtv_1().getElement(key) << " \n";
+  Database::getInstanceMtv_2().updateElement(key, "update mtv2");
+  std::cout << "element after update mtv2 = " << Database::getInstanceMtv_2().getElement(key) << " \n";
+
+  Database::getInstanceMtv_1().removeElement(key);
+  std::cout << "element after remove mtv1 = " << Database::getInstanceMtv_1().getElement(key) << " \n";
+  Database::getInstanceMtv_2().removeElement(key);
+std::cout << "element after remove mtv2 = " << Database::getInstanceMtv_2().getElement(key) << " \n";
+
+
+ 
+  Database::getInstanceMtv_1().deleteTable("tablex");
+  Database::getInstanceMtv_2().deleteTable("tabley");
 }

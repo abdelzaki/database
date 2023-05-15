@@ -14,7 +14,8 @@ class Database
 public:
     /// @brief
     /// @return
-    static Database &getInstance();
+    static Database &getInstanceMtv_1();
+    static Database &getInstanceMtv_2();
     /// @brief
     /// @param id
     /// @param value
@@ -36,11 +37,10 @@ public:
     void deleteTable(const std::string &table);
 
 private:
-    pqxx::connection connectionMtv_1;
-     pqxx::connection connectionMtv_2
+    pqxx::connection connection;
     /// @brief
     /// @param
-    Database(const std::string &command);
+    Database(const std::string &command, const std::string& table);
     /// @brief
     /// @param command
     void performExecuteCommand(const std::string &command);
