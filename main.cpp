@@ -16,5 +16,5 @@ int main()
   std::cout << "element after update = " << Database::getInstance().getElement(key) << " \n";
   Database::getInstance().removeElement(key);
   std::cout << "element after remove = " << Database::getInstance().getElement(key) << "  \n";
-  Database::getInstance().deleteTable("MTV");
+  Database::getInstance().deleteTable("MTV_1");
 }

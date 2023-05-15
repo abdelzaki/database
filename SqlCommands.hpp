@@ -10,7 +10,7 @@ namespace SqlCommands
   extern std::string startConnection;
 
   extern std::string createTable;
-
+  
   extern std::string insertElement;
 
   extern std::string updateElement;
