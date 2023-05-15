@@ -21,7 +21,7 @@ FetchContent_MakeAvailable(libpqxx)
 
 
 
-add_executable(${PROJECT_NAME} main.cpp Database.cpp SqlCommands.cpp)
+add_executable(${PROJECT_NAME} main.cpp Database.cpp SqlCommands.cpp AbstractTable.cpp MtvTable.cpp)
 target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt  -lpqxx)
 target_include_directories(${PROJECT_NAME}  PUBLIC ./)
 target_include_directories(${PROJECT_NAME}  PUBLIC ./)
