@@ -3,9 +3,11 @@
 
 AbstractTable& Database::getMtvTable()
 {
-    static AbstractTable mtvTable;
-    return instance_1;
+    static MtvTable mtvTable;
+    return mtvTable;
 }
+
+/*
 AbstractTable &Database::getDocumentationTable()
 {
 
@@ -13,6 +15,7 @@ AbstractTable &Database::getDocumentationTable()
 
     return documentaionTable;
 }
+*/
 
 
 Database::~Database()

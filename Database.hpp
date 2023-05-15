@@ -7,6 +7,7 @@
 #include <pqxx/pqxx>
 #include "SqlCommands.hpp"
 #include "AbstractTable.hpp"
+#include "MtvTable.hpp"
 
 /**
  *  @brief Diese Klasse ist ein Singleton und besitzt keine Kopier- oder Move-Konstruktoren.
@@ -23,7 +24,7 @@ public:
     * @return Ein Objekt, das mit der angegebenen Tabelle verknüpft ist.
     */
     static AbstractTable& getMtvTable();
-    static AbstractTable& getDocumentationTable();
+    //static AbstractTable& getDocumentationTable();
     virtual ~Database();
 private:
     // Delete copy and move operator also copy and move constructor to be able to implement singelton

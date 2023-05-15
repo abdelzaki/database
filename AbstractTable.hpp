@@ -11,6 +11,7 @@ class AbstractTable
 {
 public:
     AbstractTable(const std::string &table);
+    AbstractTable(const std::string &table, std::string& connection);
     void virtual insertElement(int id, const std::string &value) = 0;
     /// @brief
     /// @param id
@@ -30,12 +31,9 @@ public:
     virtual ~AbstractTable();
 
 protected:
-    void performExecuteCommand(const std::string &command) = 0;
-
-private:
+    void virtual performExecuteCommand(const std::string &command) = 0;
     std::string tableName;
-    qxx::connection connection;
-    /// @brief
-    /// @param command
+    pqxx::connection connection;
+    
 
 };

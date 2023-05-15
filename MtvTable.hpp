@@ -22,5 +22,5 @@ public:
 
 private:
     MtvTable();
-     std::string tableName;;
+    std::string tableName;;
 };

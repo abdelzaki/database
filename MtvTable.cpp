@@ -1,11 +1,8 @@
 #include "MtvTable.hpp"
 
-MtvTable::MtvTable() : AbstractTable("MTV"), connection(SqlCommands::startConnection.c_str())
+MtvTable::MtvTable() : AbstractTable("MTV", SqlCommands::startConnection)
 {
-    tableName = "MTV";
-    pqxx::work work(connection);
-    work.exec(command.c_str());
-    work.commit();
+
 }
 
 void MtvTable::insertElement(int id, const std::string &value)

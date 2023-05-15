@@ -2,6 +2,15 @@
 
 AbstractTable::AbstractTable(const std::string &table) : tableName{table} {}
 
+AbstractTable::AbstractTable(const std::string &table, std::string &startConnection): tableName{table} ,connection(startConnection.c_str())
+{
+   
+    pqxx::work work(connection);
+    auto command = fmt::format(SqlCommands::createTable,tableName);
+    work.exec(command.c_str());
+    work.commit();
+}
+
 void AbstractTable::insertElement(int id, const std::string &value)
 {
    auto command = fmt::format(SqlCommands::insertElement, tableName, id, value);
@@ -36,7 +45,7 @@ std::string AbstractTable::getElement(int id)
 
 /// @brief
 /// @param id
-void AbstractTable::removeElement(int id) = 0
+void AbstractTable::removeElement(int id) 
 {
    auto command = fmt::format(SqlCommands::removeElement, tableName, id);
    performExecuteCommand(command);
@@ -45,8 +54,12 @@ void AbstractTable::removeElement(int id) = 0
 /// @param 
 void AbstractTable::deleteTable(const std::string &table)
 {
-   auto command = fmt::format(SqlCommands::removeElement, tableName, id);
+   auto command = fmt::format(SqlCommands::removeElement, tableName);
    performExecuteCommand(command);
+}
+
+AbstractTable::~AbstractTable()
+{
 }
 
 void AbstractTable::performExecuteCommand(const std::string &command)
