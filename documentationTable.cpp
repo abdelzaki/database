@@ -1,3 +1,7 @@
+
+#include <fmt/core.h>
+#include <pqxx/pqxx>
+#include "sqlCommands.hpp"
 #include "documentationTable.hpp"
 
 DocumentationTable::DocumentationTable() : AbstractTable("Documentation", sql_commands::startConnectionDocumentation)

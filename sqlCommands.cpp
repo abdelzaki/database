@@ -1,5 +1,5 @@
 #include <string>
-#include "sqlcommands.hpp"
+#include "sqlCommands.hpp"
 
 std::string sql_commands::startConnectionMtv = "host=localhost port=5432 dbname=test user=tuser password=linuxc";
 

@@ -18,7 +18,7 @@ public:
      * das mit einer bestimmten Tabelle verknüpft ist und gibt dieses Objekt zurück.
      * @return Ein Objekt, das mit der angegebenen Tabelle verknüpft ist.
      */
-    static AbstractTable &getMtvTable();
+    static MtvTable &getMtvTable();
     static DocumentationTable &getDocumentationTable();
     virtual ~Database();
 

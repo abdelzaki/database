@@ -1,4 +1,4 @@
-#ifdef abstractTable
+#ifndef abstractTable
 #define abstractTable
 #pragma once
 

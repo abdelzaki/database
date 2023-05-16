@@ -1,6 +1,6 @@
 #include "database.hpp"
 
-AbstractTable &Database::getMtvTable()
+MtvTable &Database::getMtvTable()
 {
     static MtvTable mtvTable;
     return mtvTable;

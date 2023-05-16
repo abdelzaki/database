@@ -1,4 +1,8 @@
-#include "MtvTable.hpp"
+
+#include <fmt/core.h>
+#include <pqxx/pqxx>
+#include "sqlCommands.hpp"
+#include "mtvTable.hpp"
 
 MtvTable::MtvTable() : AbstractTable("MTV", sql_commands::startConnectionMtv)
 {
