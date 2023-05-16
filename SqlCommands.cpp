@@ -3,8 +3,11 @@
 
 std::string SqlCommands::startConnection = "host=localhost port=5432 dbname=test user=tuser password=linuxc";
 
-std::string SqlCommands::createTableMtv = R"(CREATE TABLE IF NOT EXISTS {} 
-                                            (ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL);)";
+//std::string SqlCommands::startConnectionDocumentation = "host=localhost port=5432 dbname=documentation user=me password=linuxc";
+std::string SqlCommands::startConnectionDocumentation = "host=localhost port=5432 dbname=test user=tuser password=linuxc";
+
+
+std::string SqlCommands::createTableMtv = R"(CREATE TABLE IF NOT EXISTS {} (ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL);)";
 
 std::string SqlCommands::insertElementBasic = R"(INSERT INTO {} (ID,NAME) VALUES ({}, '{}');)";
 
@@ -17,9 +20,7 @@ std::string SqlCommands::removeElementBasic = R"(DELETE FROM {} WHERE ID={};)";
 std::string SqlCommands::deleteTableBasic = R"(DROP TABLE {};)";
 
 
-std::string SqlCommands::createTableDocumentation = R"(CREATE TABLE IF NOT EXISTS {} 
-                                                    (ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL,
-                                                    DATE TEXT NOT NULL);)";
+std::string SqlCommands::createTableDocumentation = R"(CREATE TABLE IF NOT EXISTS {} (ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL, DATE TEXT NOT NULL);)";
 
 std::string SqlCommands::insertElementDocumentation = R"(INSERT INTO {} (ID,NAME,DATE) VALUES ({}, '{}', '{}');)";
 

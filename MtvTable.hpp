@@ -10,7 +10,7 @@ public:
 
     void updateElement(int id, const std::string &value);
 
-    std::string getElement(int id);
+    pqxx::row getElement(int id);
 
     void removeElement(int id);
 

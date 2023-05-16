@@ -14,7 +14,7 @@ void MtvTable::updateElement(int id, const std::string &value)
     AbstractTable::updateElement(id, value);
 }
 
-std::string MtvTable::getElement(int id)
+pqxx::row  MtvTable::getElement(int id)
 {
     return AbstractTable::getElement(id);
 }
@@ -31,6 +31,7 @@ void MtvTable::deleteTable()
 
 void MtvTable::performExecuteCommand(const std::string &command)
 {
+    AbstractTable::performExecuteCommand(command);
 
 }
 

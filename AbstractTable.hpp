@@ -12,15 +12,15 @@ class AbstractTable
 public:
     AbstractTable(const std::string &table);
     AbstractTable(const std::string &table, std::string &connection);
-    void virtual insertElement(int id, const std::string &value) = 0;
+    void virtual insertElement(int id, const std::string &value);
     /// @brief
     /// @param id
     /// @param value
-    void virtual updateElement(int id, const std::string &value) = 0;
+    void virtual updateElement(int id, const std::string &value);
     /// @brief
     /// @param id
     /// @return
-    result::tuple virtual getElement(int id) = 0;
+    pqxx::row virtual getElement(int id) = 0;
 
     /// @brief
     /// @param id

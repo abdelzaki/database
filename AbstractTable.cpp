@@ -1,20 +1,26 @@
 #include "AbstractTable.hpp"
 
-AbstractTable::AbstractTable(const std::string &table) : tableName{table} {}
+AbstractTable::AbstractTable(const std::string &table) : tableName{table} {
+
+   std::cout<< tableName <<" ---  \n"; 
+}
 
 AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : tableName{table}, connection(startConnection.c_str())
 {
+   std::cout<< "AbstractTable 2" <<" ---  \n"; 
 
    pqxx::work work(connection);
-   auto command = fmt::format(SqlCommands::createTable, tableName);
+   auto command = fmt::format(SqlCommands::createTableMtv, tableName);
    work.exec(command.c_str());
+   std::cout << "exec\n";
    work.commit();
+   std::cout << command<<" done \n"; 
 }
 
-void AbstractTable::insertElement(int id, const std::string &value)
-{
+void AbstractTable::insertElement(int id, const std::string &value){
       auto command = fmt::format(SqlCommands::insertElementBasic, tableName, id, value);
       performExecuteCommand(command);
+      
 }
 /// @brief
 /// @param id
@@ -27,7 +33,7 @@ void AbstractTable::updateElement(int id, const std::string &value)
 /// @brief
 /// @param id
 /// @return
-result::tuple AbstractTable::getElement(int id)
+pqxx::row AbstractTable::getElement(int id)
 {
    auto command = fmt::format(SqlCommands::findElementBasic, tableName, id);
    try
@@ -39,7 +45,7 @@ result::tuple AbstractTable::getElement(int id)
    catch (const std::exception &error)
    {
       std::cerr << error.what() << std::endl;
-      return "NULL";
+     
    }
 }
 
@@ -67,4 +73,5 @@ void AbstractTable::performExecuteCommand(const std::string &command)
    pqxx::work work(connection);
    work.exec(command.c_str());
    work.commit();
+
 }

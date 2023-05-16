@@ -6,23 +6,25 @@ class DocumentationTable : public AbstractTable
     friend class Database;
 
 public:
-    void insertElement(int id, const std::string &name, const std::string &date );
+    void insertElement(int id, const std::string &name, const std::string &date ); 
 
-    void updateElement(int id, const std::string &name, const std::string &date);
+    void updateElement(int id, const std::string &name, const std::string &date) ;
 
-    std::string getElement(int id);
+    pqxx::row  getElement(int id) ;
 
-    void removeElement(int id);
+    void removeElement(int id) ;
 
-    void deleteTable();
+    void deleteTable() ;
 
     void performExecuteCommand(const std::string &command);
 
-    virtual ~MtvTable();
+
+
+    virtual ~DocumentationTable();
 
 private:
     DocumentationTable();
-    std::string tableName;
-    pqxx::connection connection;
+    //std::string tableName;
+    //pqxx::connection connection;
 
 };

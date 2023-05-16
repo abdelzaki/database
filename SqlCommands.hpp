@@ -9,7 +9,7 @@ namespace SqlCommands
 
   extern std::string startConnection;
 
-
+  extern std::string startConnectionDocumentation;
 
   extern std::string createTableMtv; 
   
