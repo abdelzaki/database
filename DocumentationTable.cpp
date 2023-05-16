@@ -11,12 +11,13 @@ DocumentationTable::DocumentationTable() : AbstractTable("Documentation", SqlCom
 void DocumentationTable::insertElement(int id, const std::string &name, const std::string &date)
 {
     auto command = fmt::format(SqlCommands::insertElementDocumentation, tableName, id, name, date);
+
     performExecuteCommand(command);
 }
 
 void DocumentationTable::updateElement(int id, const std::string &name, const std::string &date)
 {
-    auto command = fmt::format(SqlCommands::updateElementDocumentation, tableName, id, name, date);
+    auto command = fmt::format(SqlCommands::updateElementDocumentation, tableName, name, date, id);
     performExecuteCommand(command);
 }
 

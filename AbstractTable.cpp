@@ -29,6 +29,7 @@ pqxx::row AbstractTable::getElement(int id)
    {
       pqxx::work work(connection);
       pqxx::result result = work.exec(command.c_str());
+      
       return result.at(0);
    }
    catch (const std::exception &error)

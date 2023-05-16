@@ -9,26 +9,24 @@
 
 int main()
 {
-  int key{41};
+  int key{228};
+  auto& refMtv = Database::getMtvTable();
+  auto& refDocu = Database::getDocumentationTable();
 
-  //Database::getMtvTable().insertElement(key,"12");
-  Database::getDocumentationTable().insertElement(key, "1","2");
-  std::cout << " insert 1 1 2 \n";
-  std::cout << "element after insert mtv1 = " << Database::getDocumentationTable().getElement(key)["NAME"].c_str() << " \n";
-  //Database::getInstanceMtv_2().insertElement(key, "insert mtv2");
-  //std::cout << "element after insert mtv2 = " << Database::getInstanceMtv_2().getElement(key) << " \n";
+  refMtv.insertElement(key,"12");
+  refDocu.insertElement(key, "1","21");
+    
+  std::cout << "element after insert mtv = " << refMtv.getElement(key)["NAME"].c_str() << " \n";
+  std::cout << "element after insert Documentation = "<< refDocu.getElement(key)["NAME"].c_str() << "  " << refDocu.getElement(key)["DATE"].c_str() << " \n";
+  
+  refMtv.updateElement(key, "update mtv1");
+  std::cout << "element after update mtv = " << refMtv.getElement(key)["NAME"] << " \n";
+  refDocu.updateElement(key, "update document 1", "update document 1");
+  std::cout << "element after update document = " << refDocu.getElement(key)["NAME"].c_str() << refDocu.getElement(key)["DATE"].c_str() << " \n";
 
-  //Database::getMtvTable().updateElement(key, "update mtv1");
-  //std::cout << "element after update mtv1 = " << Database::getMtvTable().getElement(key)["NAME"] << " \n";
-  //Database::getInstanceMtv_2().updateElement(key, "update mtv2");
-  //std::cout << "element after update mtv2 = " << Database::getInstanceMtv_2().getElement(key) << " \n";
-
-  //Database::getMtvTable().removeElement(key);
-  //std::cout << "element after remove mtv1 = " << Database::getMtvTable().getElement(key)["NAME"] << " \n";
-  //Database::getInstanceMtv_2().removeElement(key);
-  //std::cout << "element after remove mtv2 = " << Database::getInstanceMtv_2().getElement(key) << " \n";
+  Database::getMtvTable().removeElement(key);
   Database::getDocumentationTable().removeElement(key);
-  //Database::getMtvTable().deleteTable();
-  //Database::getInstanceMtv_2().deleteTable("tabley");
+  refMtv.deleteTable();
+  refDocu.deleteTable();
   std::cout << "end";
 }
