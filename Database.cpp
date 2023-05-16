@@ -1,5 +1,4 @@
-#include "Database.hpp"
-#include <fmt/core.h>
+#include "database.hpp"
 
 AbstractTable &Database::getMtvTable()
 {
@@ -13,6 +12,4 @@ DocumentationTable &Database::getDocumentationTable()
     return documentaionTable;
 }
 
-Database::~Database()
-{
-}
+Database::~Database() {}

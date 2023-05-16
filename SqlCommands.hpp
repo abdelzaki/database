@@ -1,13 +1,13 @@
+#ifndef sqlCommands
+#define sqlCommands
 #pragma once
-#ifndef __SqlCommands__
-#define __SqlCommands__
 
 #include <string>
 
-namespace SqlCommands
+namespace sql_commands
 {
 
-  extern std::string startConnection;
+  extern std::string startConnectionMtv;
 
   extern std::string startConnectionDocumentation;
 

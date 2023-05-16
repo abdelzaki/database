@@ -1,11 +1,9 @@
+#ifdef abstractTable
+#define abstractTable
 #pragma once
+
 #include <string>
-#include <iostream>
-
 #include <pqxx/pqxx>
-#include <fmt/core.h>
-
-#include "SqlCommands.hpp"
 
 class AbstractTable
 {
@@ -36,3 +34,5 @@ protected:
     std::string tableName;
     pqxx::connection connection;
 };
+
+#endif

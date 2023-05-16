@@ -1,23 +1,23 @@
-#include "DocumentationTable.hpp"
+#include "documentationTable.hpp"
 
-DocumentationTable::DocumentationTable() : AbstractTable("Documentation", SqlCommands::startConnectionDocumentation)
+DocumentationTable::DocumentationTable() : AbstractTable("Documentation", sql_commands::startConnectionDocumentation)
 {
     pqxx::work work(connection);
-    auto command = fmt::format(SqlCommands::createTableDocumentation, tableName);
+    auto command = fmt::format(sql_commands::createTableDocumentation, tableName);
     work.exec(command.c_str());
     work.commit();
 }
 
 void DocumentationTable::insertElement(int id, const std::string &name, const std::string &date)
 {
-    auto command = fmt::format(SqlCommands::insertElementDocumentation, tableName, id, name, date);
+    auto command = fmt::format(sql_commands::insertElementDocumentation, tableName, id, name, date);
 
     performExecuteCommand(command);
 }
 
 void DocumentationTable::updateElement(int id, const std::string &name, const std::string &date)
 {
-    auto command = fmt::format(SqlCommands::updateElementDocumentation, tableName, name, date, id);
+    auto command = fmt::format(sql_commands::updateElementDocumentation, tableName, name, date, id);
     performExecuteCommand(command);
 }
 

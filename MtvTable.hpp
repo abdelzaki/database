@@ -1,5 +1,8 @@
+#ifndef mtvTable
+#define mtvtable
+
 #pragma once
-#include "AbstractTable.hpp"
+#include "abstractTable.hpp"
 
 class MtvTable : public AbstractTable
 {
@@ -23,3 +26,5 @@ public:
 private:
     MtvTable();
 };
+
+#endif

@@ -1,9 +1,9 @@
 #include "MtvTable.hpp"
 
-MtvTable::MtvTable() : AbstractTable("MTV", SqlCommands::startConnection)
+MtvTable::MtvTable() : AbstractTable("MTV", sql_commands::startConnectionMtv)
 {
     pqxx::work work(connection);
-    auto command = fmt::format(SqlCommands::createTableMtv, tableName);
+    auto command = fmt::format(sql_commands::createTableMtv, tableName);
     work.exec(command.c_str());
     work.commit();
 }

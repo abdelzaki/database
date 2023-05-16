@@ -1,6 +1,8 @@
 
-
-#include "AbstractTable.hpp"
+#include <iostream>
+#include <fmt/core.h>
+#include "sqlCommands.hpp"
+#include "abstractTable.hpp"
 
 AbstractTable::AbstractTable(const std::string &table) : tableName{table} {}
 
@@ -8,7 +10,7 @@ AbstractTable::AbstractTable(const std::string &table, std::string &startConnect
 
 void AbstractTable::insertElement(int id, const std::string &value)
 {
-   auto command = fmt::format(SqlCommands::insertElementBasic, tableName, id, value);
+   auto command = fmt::format(sql_commands::insertElementBasic, tableName, id, value);
    performExecuteCommand(command);
 }
 /// @brief
@@ -16,7 +18,7 @@ void AbstractTable::insertElement(int id, const std::string &value)
 /// @param value
 void AbstractTable::updateElement(int id, const std::string &value)
 {
-   auto command = fmt::format(SqlCommands::updateElementBasic, tableName, value, id);
+   auto command = fmt::format(sql_commands::updateElementBasic, tableName, value, id);
    performExecuteCommand(command);
 }
 /// @brief
@@ -24,12 +26,12 @@ void AbstractTable::updateElement(int id, const std::string &value)
 /// @return
 pqxx::row AbstractTable::getElement(int id)
 {
-   auto command = fmt::format(SqlCommands::findElementBasic, tableName, id);
+   auto command = fmt::format(sql_commands::findElementBasic, tableName, id);
    try
    {
       pqxx::work work(connection);
       pqxx::result result = work.exec(command.c_str());
-      
+
       return result.at(0);
    }
    catch (const std::exception &error)
@@ -42,14 +44,14 @@ pqxx::row AbstractTable::getElement(int id)
 /// @param id
 void AbstractTable::removeElement(int id)
 {
-   auto command = fmt::format(SqlCommands::removeElementBasic, tableName, id);
+   auto command = fmt::format(sql_commands::removeElementBasic, tableName, id);
    performExecuteCommand(command);
 }
 /// @brief
 /// @param
 void AbstractTable::deleteTable()
 {
-   auto command = fmt::format(SqlCommands::deleteTableBasic, tableName);
+   auto command = fmt::format(sql_commands::deleteTableBasic, tableName);
    performExecuteCommand(command);
 }
 

@@ -1,5 +1,9 @@
+#ifndef documentationTable
+#define documentationTable
+
 #pragma once
-#include "AbstractTable.hpp"
+#include <string>
+#include "abstractTable.hpp"
 
 class DocumentationTable : public AbstractTable
 {
@@ -23,3 +27,5 @@ public:
 private:
     DocumentationTable();
 };
+
+#endif

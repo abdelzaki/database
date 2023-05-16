@@ -1,14 +1,9 @@
+#ifndef database
+#define database
 #pragma once
-#ifndef __Database__
-#define __Database__
 
-#include <string>
-#include <iostream>
-#include <pqxx/pqxx>
-#include "SqlCommands.hpp"
-
-#include "MtvTable.hpp"
-#include "DocumentationTable.hpp"
+#include "mtvTable.hpp"
+#include "documentationTable.hpp"
 /**
  *  @brief Diese Klasse ist ein Singleton und besitzt keine Kopier- oder Move-Konstruktoren.
  *  Um diese Klasse zu verwenden, muss die Methode "getInstance" aufgerufen werden.
@@ -24,11 +19,11 @@ public:
      * @return Ein Objekt, das mit der angegebenen Tabelle verknüpft ist.
      */
     static AbstractTable &getMtvTable();
-    static DocumentationTable& getDocumentationTable();
+    static DocumentationTable &getDocumentationTable();
     virtual ~Database();
 
 private:
-    // Delete copy and move operator also copy and move constructor to be able to implement singelton
+    // Singelton Design pattern
     Database(Database &) = delete;
     Database(Database &&) = delete;
     Database &operator=(Database const &) = delete;
