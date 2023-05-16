@@ -13,28 +13,28 @@ AbstractTable::AbstractTable(const std::string &table, std::string &startConnect
 
 void AbstractTable::insertElement(int id, const std::string &value)
 {
-   auto command = fmt::format(SqlCommands::insertElement, tableName, id, value);
-   performExecuteCommand(command);
+      auto command = fmt::format(SqlCommands::insertElementBasic, tableName, id, value);
+      performExecuteCommand(command);
 }
 /// @brief
 /// @param id
 /// @param value
 void AbstractTable::updateElement(int id, const std::string &value)
 {
-   auto command = fmt::format(SqlCommands::updateElement, tableName, value, id);
+   auto command = fmt::format(SqlCommands::updateElementBasic, tableName, value, id);
    performExecuteCommand(command);
 }
 /// @brief
 /// @param id
 /// @return
-std::string AbstractTable::getElement(int id)
+result::tuple AbstractTable::getElement(int id)
 {
-   auto command = fmt::format(SqlCommands::findElement, tableName, id);
+   auto command = fmt::format(SqlCommands::findElementBasic, tableName, id);
    try
    {
       pqxx::work work(connection);
       pqxx::result result = work.exec(command.c_str());
-      return result.at(0)["NAME"].c_str();
+      return result.at(0);
    }
    catch (const std::exception &error)
    {
@@ -47,14 +47,14 @@ std::string AbstractTable::getElement(int id)
 /// @param id
 void AbstractTable::removeElement(int id)
 {
-   auto command = fmt::format(SqlCommands::removeElement, tableName, id);
+   auto command = fmt::format(SqlCommands::removeElementBasic, tableName, id);
    performExecuteCommand(command);
 }
 /// @brief
 /// @param
 void AbstractTable::deleteTable()
 {
-   auto command = fmt::format(SqlCommands::removeElement, tableName);
+   auto command = fmt::format(SqlCommands::deleteTableBasic, tableName);
    performExecuteCommand(command);
 }
 

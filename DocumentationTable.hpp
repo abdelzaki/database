@@ -1,14 +1,14 @@
 #pragma once
 #include "AbstractTable.hpp"
 
-class MtvTable : public AbstractTable
+class DocumentationTable : public AbstractTable
 {
     friend class Database;
 
 public:
-    void insertElement(int id, const std::string &value);
+    void insertElement(int id, const std::string &name, const std::string &date );
 
-    void updateElement(int id, const std::string &value);
+    void updateElement(int id, const std::string &name, const std::string &date);
 
     std::string getElement(int id);
 
@@ -21,7 +21,8 @@ public:
     virtual ~MtvTable();
 
 private:
-    MtvTable();
+    DocumentationTable();
     std::string tableName;
+    pqxx::connection connection;
 
 };

@@ -1,7 +1,7 @@
 #include "Database.hpp"
 #include <fmt/core.h>
 
-AbstractTable& Database::getMtvTable()
+AbstractTable &Database::getMtvTable()
 {
     static MtvTable mtvTable;
     return mtvTable;
@@ -16,7 +16,6 @@ AbstractTable &Database::getDocumentationTable()
     return documentaionTable;
 }
 */
-
 
 Database::~Database()
 {

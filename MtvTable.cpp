@@ -1,6 +1,6 @@
 #include "MtvTable.hpp"
 
-MtvTable::MtvTable() : AbstractTable("MTV", SqlCommands::startConnection)
+MtvTable::MtvTable() : AbstractTable("MTV", SqlCommands::startConnection )
 {
 }
 
@@ -31,7 +31,7 @@ void MtvTable::deleteTable()
 
 void MtvTable::performExecuteCommand(const std::string &command)
 {
-    std::cout << command;
+
 }
 
 MtvTable::~MtvTable()

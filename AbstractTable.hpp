@@ -20,7 +20,7 @@ public:
     /// @brief
     /// @param id
     /// @return
-    std::string virtual getElement(int id) = 0;
+    result::tuple virtual getElement(int id) = 0;
 
     /// @brief
     /// @param id

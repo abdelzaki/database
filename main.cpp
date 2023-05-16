@@ -12,6 +12,7 @@ int main()
   int key{99};
 
   Database::getMtvTable().insertElement(1,"12");
+  Database::getDocumentationTable().insertElement(1,"1","2");
   
 
   std::cout << "element after insert mtv1 = " << Database::getMtvTable().getElement(key) << " \n";
