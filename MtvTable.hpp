@@ -22,6 +22,4 @@ public:
 
 private:
     MtvTable();
-    std::string tableName;
-
 };

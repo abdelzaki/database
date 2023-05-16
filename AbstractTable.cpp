@@ -1,18 +1,18 @@
+
+#include <pqxx/pqxx>
+#include <fmt/core.h>
+
+#include "SqlCommands.hpp"
 #include "AbstractTable.hpp"
 
-AbstractTable::AbstractTable(const std::string &table) : tableName{table} {
+AbstractTable::AbstractTable(const std::string &table) : tableName{table} {}
 
-}
+AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : tableName{table}, connection(startConnection.c_str()) {}
 
-AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : tableName{table}, connection(startConnection.c_str())
+void AbstractTable::insertElement(int id, const std::string &value)
 {
-   std::cout << "table name" << tableName <<" \n";
-}
-
-void AbstractTable::insertElement(int id, const std::string &value){
-      auto command = fmt::format(SqlCommands::insertElementBasic, tableName, id, value);
-      performExecuteCommand(command);
-      
+   auto command = fmt::format(SqlCommands::insertElementBasic, tableName, id, value);
+   performExecuteCommand(command);
 }
 /// @brief
 /// @param id
@@ -37,7 +37,6 @@ pqxx::row AbstractTable::getElement(int id)
    catch (const std::exception &error)
    {
       std::cerr << error.what() << std::endl;
-     
    }
 }
 
@@ -65,5 +64,4 @@ void AbstractTable::performExecuteCommand(const std::string &command)
    pqxx::work work(connection);
    work.exec(command.c_str());
    work.commit();
-
 }

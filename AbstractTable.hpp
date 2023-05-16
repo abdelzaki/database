@@ -10,8 +10,6 @@
 class AbstractTable
 {
 public:
-    AbstractTable(const std::string &table);
-    AbstractTable(const std::string &table, std::string &connection);
     void virtual insertElement(int id, const std::string &value);
     /// @brief
     /// @param id
@@ -26,8 +24,11 @@ public:
     /// @param id
     void virtual removeElement(int id) = 0;
     /// @brief
-    /// @param 
+    /// @param
     void virtual deleteTable() = 0;
+
+    AbstractTable(const std::string &table);
+    AbstractTable(const std::string &table, std::string &connection);
     virtual ~AbstractTable();
 
 protected:

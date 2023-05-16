@@ -11,8 +11,8 @@ namespace SqlCommands
 
   extern std::string startConnectionDocumentation;
 
-  extern std::string createTableMtv; 
-  
+  extern std::string createTableMtv;
+
   extern std::string insertElementBasic;
 
   extern std::string updateElementBasic;
@@ -22,7 +22,6 @@ namespace SqlCommands
   extern std::string insertElementDocumentation;
 
   extern std::string updateElementDocumentation;
-
 
   extern std::string findElementBasic;
 
