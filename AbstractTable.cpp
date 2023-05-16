@@ -1,8 +1,5 @@
 
-#include <pqxx/pqxx>
-#include <fmt/core.h>
 
-#include "SqlCommands.hpp"
 #include "AbstractTable.hpp"
 
 AbstractTable::AbstractTable(const std::string &table) : tableName{table} {}

@@ -7,15 +7,11 @@ AbstractTable &Database::getMtvTable()
     return mtvTable;
 }
 
-
-DocumentationTable& Database::getDocumentationTable()
+DocumentationTable &Database::getDocumentationTable()
 {
-    std::cout << "etDocumentationTable() \n" ;
     static DocumentationTable documentaionTable;
-
     return documentaionTable;
 }
-
 
 Database::~Database()
 {

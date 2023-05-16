@@ -1,11 +1,10 @@
 #include "MtvTable.hpp"
 
-MtvTable::MtvTable() : AbstractTable("MTV", SqlCommands::startConnection )
+MtvTable::MtvTable() : AbstractTable("MTV", SqlCommands::startConnection)
 {
     pqxx::work work(connection);
     auto command = fmt::format(SqlCommands::createTableMtv, tableName);
     work.exec(command.c_str());
-    std::cout << "exec\n";
     work.commit();
 }
 
@@ -19,7 +18,7 @@ void MtvTable::updateElement(int id, const std::string &value)
     AbstractTable::updateElement(id, value);
 }
 
-pqxx::row  MtvTable::getElement(int id)
+pqxx::row MtvTable::getElement(int id)
 {
     return AbstractTable::getElement(id);
 }
@@ -37,7 +36,6 @@ void MtvTable::deleteTable()
 void MtvTable::performExecuteCommand(const std::string &command)
 {
     AbstractTable::performExecuteCommand(command);
-
 }
 
 MtvTable::~MtvTable()
