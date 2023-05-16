@@ -2,19 +2,11 @@
 
 AbstractTable::AbstractTable(const std::string &table) : tableName{table} {
 
-   std::cout<< tableName <<" ---  \n"; 
 }
 
 AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : tableName{table}, connection(startConnection.c_str())
 {
-   std::cout<< "AbstractTable 2" <<" ---  \n"; 
-
-   pqxx::work work(connection);
-   auto command = fmt::format(SqlCommands::createTableMtv, tableName);
-   work.exec(command.c_str());
-   std::cout << "exec\n";
-   work.commit();
-   std::cout << command<<" done \n"; 
+   std::cout << "table name" << tableName <<" \n";
 }
 
 void AbstractTable::insertElement(int id, const std::string &value){

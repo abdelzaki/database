@@ -1,7 +1,7 @@
 #include "DocumentationTable.hpp"
 
-DocumentationTable::DocumentationTable() : AbstractTable("Documentation"), connection(SqlCommands::startConnectionDocumentation)
-{   
+DocumentationTable::DocumentationTable() : AbstractTable("Documentation",SqlCommands::startConnectionDocumentation)
+{     std::cout << "constr docu \n";
     pqxx::work work(connection);
     auto command = fmt::format(SqlCommands::createTableDocumentation, tableName);
     work.exec(command.c_str());

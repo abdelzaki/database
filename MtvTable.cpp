@@ -2,6 +2,11 @@
 
 MtvTable::MtvTable() : AbstractTable("MTV", SqlCommands::startConnection )
 {
+    pqxx::work work(connection);
+    auto command = fmt::format(SqlCommands::createTableMtv, tableName);
+    work.exec(command.c_str());
+    std::cout << "exec\n";
+    work.commit();
 }
 
 void MtvTable::insertElement(int id, const std::string &value)
