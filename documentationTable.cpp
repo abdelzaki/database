@@ -35,9 +35,9 @@ void DocumentationTable::removeElement(int id)
     AbstractTable::removeElement(id);
 }
 
-void DocumentationTable::deleteTable()
+void DocumentationTable::clearTable()
 {
-    AbstractTable::deleteTable();
+    AbstractTable::clearTable();
 }
 
 void DocumentationTable::performExecuteCommand(const std::string &command)
@@ -45,13 +45,13 @@ void DocumentationTable::performExecuteCommand(const std::string &command)
     AbstractTable::performExecuteCommand(command);
 }
 
-DocumentationTable::~DocumentationTable() {}
-
 void DocumentationTable::setTableRowElement(const std::string &element)
 {
-   AbstractTable::setTableRowElement(element);
+    AbstractTable::setTableRowElement(element);
 }
 void DocumentationTable::setTableRowElement(const std::set<std::string> &elements)
 {
-   AbstractTable::setTableRowElement(elements);
+    AbstractTable::setTableRowElement(elements);
 }
+
+DocumentationTable::~DocumentationTable() {}

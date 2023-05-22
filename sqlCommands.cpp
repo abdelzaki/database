@@ -7,15 +7,15 @@ std::string sql_commands::startConnectionDocumentation = "host=localhost port=54
 
 std::string sql_commands::createTableMtv = R"(CREATE TABLE IF NOT EXISTS {} (ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL);)";
 
-std::string sql_commands::insertElementBasic = R"(INSERT INTO {} (ID,NAME) VALUES ({}, '{}');)";
+std::string sql_commands::clearTableinsertElementMtv = R"(INSERT INTO {} (ID,NAME) VALUES ({}, '{}');)";
 
-std::string sql_commands::updateElementBasic = R"(UPDATE {}  set NAME = '{}'  WHERE ID={};)";
+std::string sql_commands::updateElementMtv = R"(UPDATE {}  set NAME = '{}'  WHERE ID={};)";
 
-std::string sql_commands::findElementBasic = R"(SELECT * from {} WHERE ID={};)";
+std::string sql_commands::findElement = R"(SELECT * from {} WHERE ID={};)";
 
-std::string sql_commands::removeElementBasic = R"(DELETE FROM {} WHERE ID={};)";
+std::string sql_commands::removeElement = R"(DELETE FROM {} WHERE ID={};)";
 
-std::string sql_commands::deleteTableBasic = R"(DROP TABLE {};)";
+std::string sql_commands::clearTable = R"(DELETE FROM {};)";
 
 std::string sql_commands::createTableDocumentation = R"(CREATE TABLE IF NOT EXISTS {} (ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL, DATE TEXT NOT NULL);)";
 

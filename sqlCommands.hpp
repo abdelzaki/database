@@ -4,30 +4,41 @@
 
 #include <string>
 
+/// @brief Namespace für SQL-Befehle
 namespace sql_commands
 {
 
+  /// @brief Befehl zur Erstellung einer Verbindung zur MTV-Tabelle in der Datenbank
   extern std::string startConnectionMtv;
 
+  /// @brief Befehl zur Erstellung einer Verbindung zur Doku-Tabelle in der Datenbank
   extern std::string startConnectionDocumentation;
 
+  /// @brief Befehl zur Löschen aller Elementen der MTV-Tabelle in der Datenbank
   extern std::string createTableMtv;
 
-  extern std::string insertElementBasic;
+  /// @brief Befehl zum Hinzufügen eines Elements in die MTV-Tabelle in der Datenbank
+  extern std::string insertElementMtv;
 
-  extern std::string updateElementBasic;
+  /// @brief Befehl zum Aktualisieren  eines Elements in der MTV-Tabelle in der Datenbank
+  extern std::string updateElementMtv;
 
   extern std::string createTableDocumentation;
 
+  /// @brief Befehl zum Hinzufügen eines Elements in die Doku-Tabelle in der Datenbank
   extern std::string insertElementDocumentation;
 
+  /// @brief Befehl zum Aktualisieren  eines Elements in der Doku-Tabelle in der Datenbank
   extern std::string updateElementDocumentation;
 
-  extern std::string findElementBasic;
+  /// @brief Befehl zum Finden  eines Elements in der Datenbank
+  extern std::string findElement;
 
-  extern std::string removeElementBasic;
+  /// @brief Befehl zum Löschen  eines Elements in der Datenbank
+  extern std::string removeElement;
 
-  extern std::string deleteTableBasic;
+  /// @brief Befehl zum Löschen  aller Elemente in der Datenbank
+  extern std::string clearTable;
 
 };
 #endif

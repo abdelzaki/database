@@ -15,10 +15,15 @@ class Database
 public:
     /* @brief
      * Diese Methode konstruiert ein Objekt,
-     * das mit einer bestimmten Tabelle verknüpft ist und gibt dieses Objekt zurück.
+     * das mit einer MTV Tabelle verknüpft ist und gibt dieses Objekt zurück.
      * @return Ein Objekt, das mit der angegebenen Tabelle verknüpft ist.
      */
     static MtvTable &getMtvTable();
+    /* @brief
+     * Diese Methode konstruiert ein Objekt,
+     * das mit einer Doku Tabelle verknüpft ist und gibt dieses Objekt zurück.
+     * @return Ein Objekt, das mit der angegebenen Tabelle verknüpft ist.
+     */
     static DocumentationTable &getDocumentationTable();
     virtual ~Database();
 

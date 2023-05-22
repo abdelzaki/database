@@ -29,7 +29,7 @@ int main()
 
   Database::getMtvTable().removeElement(key);
   Database::getDocumentationTable().removeElement(key);
-  refMtv.deleteTable();
-  refDocu.deleteTable();
+  refMtv.clearTable();
+  refDocu.clearTable();
   std::cout << "end";
 }
