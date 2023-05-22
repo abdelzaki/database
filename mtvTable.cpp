@@ -32,9 +32,9 @@ void MtvTable::removeElement(int id)
     AbstractTable::removeElement(id);
 }
 
-void MtvTable::deleteTable()
+void MtvTable::clearTable()
 {
-    AbstractTable::deleteTable();
+    AbstractTable::clearTable();
 }
 
 void MtvTable::performExecuteCommand(const std::string &command)
@@ -46,14 +46,11 @@ MtvTable::~MtvTable()
 {
 }
 
-
-
-
 void MtvTable::setTableRowElement(const std::string &element)
 {
-   AbstractTable::setTableRowElement(element);
+    AbstractTable::setTableRowElement(element);
 }
 void MtvTable::setTableRowElement(const std::set<std::string> &elements)
 {
-   AbstractTable::setTableRowElement(elements);
+    AbstractTable::setTableRowElement(elements);
 }

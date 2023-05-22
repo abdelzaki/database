@@ -6,7 +6,7 @@
 
 #include "abstractTable.hpp"
 
-/// @brief die Klasse erbet von Abstracttable und und implementiert alle abstrakten Methoden, die in AbstractTable definiert sind
+/// @brief Die Klasse für die Dokumentationstabelle erbt von AbstractTable und implementiert alle abstrakten Methoden, die in AbstractTable definiert si
 class DocumentationTable : public AbstractTable
 {
     /// @brief Definiert die Klasse Database als Friend-Klasse, damit Database den geschützten Konstruktor aufrufen kann
