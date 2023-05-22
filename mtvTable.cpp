@@ -22,7 +22,7 @@ void MtvTable::updateElement(int id, const std::string &value)
     AbstractTable::updateElement(id, value);
 }
 
-pqxx::row MtvTable::getElement(int id)
+std::map<std::string, std::string> MtvTable::getElement(int id)
 {
     return AbstractTable::getElement(id);
 }
@@ -44,4 +44,16 @@ void MtvTable::performExecuteCommand(const std::string &command)
 
 MtvTable::~MtvTable()
 {
+}
+
+
+
+
+void MtvTable::setTableRowElement(const std::string &element)
+{
+   AbstractTable::setTableRowElement(element);
+}
+void MtvTable::setTableRowElement(const std::set<std::string> &elements)
+{
+   AbstractTable::setTableRowElement(elements);
 }

@@ -12,6 +12,9 @@ int main()
   int key{228};
   auto &refMtv = Database::getMtvTable();
   auto &refDocu = Database::getDocumentationTable();
+  refMtv.setTableRowElement("NAME");
+  refDocu.setTableRowElement("NAME");
+  refDocu.setTableRowElement("DATE");
 
   refMtv.insertElement(key, "12");
   refDocu.insertElement(key, "1", "21");

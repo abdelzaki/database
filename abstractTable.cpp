@@ -75,7 +75,7 @@ void AbstractTable::setTableRowElement(const std::string &element)
 {
    tableRowElements.insert(element);
 }
-void AbstractTable::setTableRowElement(const std::set &elements)
+void AbstractTable::setTableRowElement(const std::set<std::string> &elements)
 {
    tableRowElements = elements;
 }

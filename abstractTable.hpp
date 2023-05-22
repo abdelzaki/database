@@ -18,7 +18,7 @@ public:
     /// @brief
     /// @param id
     /// @return
-    std::map<std::string key, std::string value> virtual getElement(int id) = 0;
+    std::map<std::string,std::string > virtual getElement(int id) = 0;
 
     /// @brief
     /// @param id
@@ -28,7 +28,7 @@ public:
     void virtual deleteTable() = 0;
 
     void virtual setTableRowElement(const std::string &element) = 0;
-    void virtual setTableRowElement(const std::set &elements) = 0;
+    void virtual setTableRowElement(const std::set<std::string> &elements) = 0;
 
     AbstractTable(const std::string &table);
     AbstractTable(const std::string &table, std::string &connection);
