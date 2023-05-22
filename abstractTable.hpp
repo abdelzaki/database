@@ -38,10 +38,6 @@ public:
     /// @param elements: die Namen aller Tabellenzeilen
     void virtual setTableRowElement(const std::set<std::string> &elements) = 0;
 
-    /// @brief konstruktore um die
-    /// @param table
-    // AbstractTable(const std::string &table);
-
     /// @brief Konstruktor zum Herstellen einer Verbindung zur Datenbank
     /// @param table Der Name der Tabelle
     /// @param connection: Verbindungsdaten zur Datenbank
@@ -52,6 +48,7 @@ public:
 protected:
     /// @brief Name der Tabelle
     std::string tableName;
+
     /// @brief Verbindung zur Datenbank
     pqxx::connection connection;
     /// @brief Namen der Tabellezeilen

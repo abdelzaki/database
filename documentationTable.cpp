@@ -4,7 +4,7 @@
 #include "sqlCommands.hpp"
 #include "documentationTable.hpp"
 
-DocumentationTable::DocumentationTable() : AbstractTable("Documentation", sql_commands::startConnectionDocumentation)
+DocumentationTable::DocumentationTable() : AbstractTable("Documentation", connectionData)
 {
     pqxx::work work(connection);
     auto command = fmt::format(sql_commands::createTableDocumentation, tableName);
@@ -55,3 +55,9 @@ void DocumentationTable::setTableRowElement(const std::set<std::string> &element
 }
 
 DocumentationTable::~DocumentationTable() {}
+
+void DocumentationTable::setConnectionData(std::string userName, std::string Password)
+{
+
+    connectionData = fmt::format(sql_commands::startConnection, userName, Password);
+}

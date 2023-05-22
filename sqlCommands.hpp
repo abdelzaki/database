@@ -9,7 +9,7 @@ namespace sql_commands
 {
 
   /// @brief Befehl zur Erstellung einer Verbindung zur MTV-Tabelle in der Datenbank
-  extern std::string startConnectionMtv;
+  extern std::string startConnection;
 
   /// @brief Befehl zur Erstellung einer Verbindung zur Doku-Tabelle in der Datenbank
   extern std::string startConnectionDocumentation;
