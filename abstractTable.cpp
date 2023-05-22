@@ -6,7 +6,7 @@
 
 // AbstractTable::AbstractTable(const std::string &table) : tableName{table} {}
 
-AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : tableName{table}, connection(connectionData.c_str()) {}
+AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : tableName{table}, connection(startConnection.c_str()) {}
 
 void AbstractTable::insertElement(int id, const std::string &value)
 {

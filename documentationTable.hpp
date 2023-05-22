@@ -51,7 +51,7 @@ public:
     /// @brief Methode zum Setzen des Benutzernamens und Passworts für die spätere Verbindung zur Datenbank
     /// @param userName Benutzername
     /// @param Password  Passwort
-    void virtual setConnectionData(std::string userName, std::string Password) override;
+    void virtual setConnectionData(std::string userName, std::string Password);
 
 protected:
     /// @brief Informationen zur Verbindung mit der Datenbank
