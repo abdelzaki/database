@@ -10,7 +10,7 @@ AbstractTable::AbstractTable(const std::string &table, std::string &startConnect
 
 void AbstractTable::insertElement(int id, const std::string &value)
 {
-   auto command = fmt::format(sql_commands::clearTableinsertElementMtv, tableName, id, value);
+   auto command = fmt::format(sql_commands::insertElementMtv, tableName, id, value);
    performExecuteCommand(command);
 }
 
