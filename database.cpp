@@ -4,7 +4,6 @@
 
 std::map<Database::Tables, std::string> Database::connections;
 
-
 MtvTable &Database::getMtvTable()
 {
     static MtvTable mtvTable(connections[Tables::mtv]);
@@ -15,18 +14,13 @@ MtvTable &Database::getMtvTable()
 DocumentationTable &Database::getDocumentationTable()
 {
     static DocumentationTable documentaionTable(connections[Tables::documentation]);
-    
-   
+
     return documentaionTable;
 }
 
 void Database::setConnectionData(Tables connection, std::string userName, std::string Password)
 {
     connections[connection] = fmt::format(sql_commands::startConnection, userName, Password).c_str();
-   
-
-    
 }
 
 Database::~Database() {}
-

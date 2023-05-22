@@ -59,7 +59,7 @@ protected:
 
     /// @brief Methode zum Ausführen eines Befehls auf der Datenbank
     /// @param command Der Befehl als SQL-Befehl
-    void performExecuteCommand(const std::string &command);
+    void executeCommand(const std::string &command);
 
     /// @brief Konstruktor zum Herstellen einer Verbindung zur Datenbank
     DocumentationTable(std::string connectionData);

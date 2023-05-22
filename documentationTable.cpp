@@ -16,13 +16,13 @@ void DocumentationTable::insertElement(int id, const std::string &name, const st
 {
     auto command = fmt::format(sql_commands::insertElementDocumentation, tableName, id, name, date);
 
-    performExecuteCommand(command);
+    executeCommand(command);
 }
 
 void DocumentationTable::updateElement(int id, const std::string &name, const std::string &date)
 {
     auto command = fmt::format(sql_commands::updateElementDocumentation, tableName, name, date, id);
-    performExecuteCommand(command);
+    executeCommand(command);
 }
 
 std::map<std::string, std::string> DocumentationTable::getElement(int id)
@@ -40,9 +40,9 @@ void DocumentationTable::clearTable()
     AbstractTable::clearTable();
 }
 
-void DocumentationTable::performExecuteCommand(const std::string &command)
+void DocumentationTable::executeCommand(const std::string &command)
 {
-    AbstractTable::performExecuteCommand(command);
+    AbstractTable::executeCommand(command);
 }
 
 void DocumentationTable::setTableRowElement(const std::string &element)

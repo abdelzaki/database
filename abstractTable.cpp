@@ -4,20 +4,18 @@
 #include "sqlCommands.hpp"
 #include "abstractTable.hpp"
 
-// AbstractTable::AbstractTable(const std::string &table) : tableName{table} {}
-
 AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : tableName{table}, connection(startConnection.c_str()) {}
 
 void AbstractTable::insertElement(int id, const std::string &value)
 {
    auto command = fmt::format(sql_commands::insertElementMtv, tableName, id, value);
-   performExecuteCommand(command);
+   executeCommand(command);
 }
 
 void AbstractTable::updateElement(int id, const std::string &value)
 {
    auto command = fmt::format(sql_commands::updateElementMtv, tableName, value, id);
-   performExecuteCommand(command);
+   executeCommand(command);
 }
 
 std::map<std::string, std::string> AbstractTable::getElement(int id)
@@ -44,20 +42,16 @@ std::map<std::string, std::string> AbstractTable::getElement(int id)
 void AbstractTable::removeElement(int id)
 {
    auto command = fmt::format(sql_commands::removeElement, tableName, id);
-   performExecuteCommand(command);
+   executeCommand(command);
 }
 
 void AbstractTable::clearTable()
 {
    auto command = fmt::format(sql_commands::clearTable, tableName);
-   performExecuteCommand(command);
+   executeCommand(command);
 }
 
-AbstractTable::~AbstractTable()
-{
-}
-
-void AbstractTable::performExecuteCommand(const std::string &command)
+void AbstractTable::executeCommand(const std::string &command)
 {
    pqxx::work work(connection);
    work.exec(command.c_str());
@@ -72,3 +66,5 @@ void AbstractTable::setTableRowElement(const std::set<std::string> &elements)
 {
    tableRowElements = elements;
 }
+
+AbstractTable::~AbstractTable() {}

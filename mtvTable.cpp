@@ -37,9 +37,9 @@ void MtvTable::clearTable()
     AbstractTable::clearTable();
 }
 
-void MtvTable::performExecuteCommand(const std::string &command)
+void MtvTable::executeCommand(const std::string &command)
 {
-    AbstractTable::performExecuteCommand(command);
+    AbstractTable::executeCommand(command);
 }
 
 MtvTable::~MtvTable()
