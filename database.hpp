@@ -3,9 +3,10 @@
 #pragma once
 
 #include <map>
-
 #include "mtvTable.hpp"
 #include "documentationTable.hpp"
+
+
 /**
  *  @brief Diese Klasse ist ein Singleton und besitzt keine Kopier- oder Move-Konstruktoren.
  *  Um diese Klasse zu verwenden, muss die Methode "getInstance" aufgerufen werden.
@@ -14,7 +15,18 @@
 class Database
 {
 
+
+
+
 public:
+
+    enum class Tables
+    {
+        mtv,
+        documentation
+    };
+
+
     /* @brief
      * Diese Methode konstruiert ein Objekt,
      * das mit einer MTV Tabelle verknüpft ist und gibt dieses Objekt zurück.
@@ -28,22 +40,28 @@ public:
      */
     static DocumentationTable &getDocumentationTable();
 
-    /// @brief Methode zum Setzen des Benutzernamens und Passworts für die spätere Verbindung zur Datenbank
+
+
+        /// @brief Methode zum Setzen des Benutzernamens und Passworts für die spätere Verbindung zur Datenbank
     /// @param userName Benutzername
     /// @param Password  Passwort
-    void virtual setConnectionData(Tables connection, std::string userName, std::string Password);
 
-    enum class Tables
-    {
-        mtv,
-        documentation
-    };
+    void static setConnectionData(Tables connection, std::string userName, std::string Password);
+
+
 
     virtual ~Database();
 
 private:
-    /// @brief
-    std::map<Tables, std::string> connections;
+
+    private:
+
+
+
+
+
+            /// @brief
+    static std::map<Tables, std::string> connections;
 
     // Singelton Design pattern
     Database(Database &) = delete;
@@ -51,5 +69,7 @@ private:
     Database &operator=(Database const &) = delete;
     Database &operator=(Database const &&) = delete;
 };
+
+
 
 #endif

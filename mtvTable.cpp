@@ -4,7 +4,7 @@
 #include "sqlCommands.hpp"
 #include "mtvTable.hpp"
 
-MtvTable::MtvTable(connectionData) : AbstractTable("MTV", connectionData)
+MtvTable::MtvTable(std::string connectionData) : AbstractTable("MTV", connectionData)
 {
     pqxx::work work(connection);
     auto command = fmt::format(sql_commands::createTableMtv, tableName);
