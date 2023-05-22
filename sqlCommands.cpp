@@ -19,4 +19,5 @@ std::string sql_commands::createTableDocumentation = R"(CREATE TABLE IF NOT EXIS
 
 std::string sql_commands::insertElementDocumentation = R"(INSERT INTO {} (ID,NAME,DATE) VALUES ({}, '{}', '{}');)";
 
+
 std::string sql_commands::updateElementDocumentation = R"(UPDATE {}  set NAME = '{}', DATE = '{}' WHERE ID={};)";
