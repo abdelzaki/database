@@ -24,15 +24,20 @@ void AbstractTable::updateElement(int id, const std::string &value)
 /// @brief
 /// @param id
 /// @return
-pqxx::row AbstractTable::getElement(int id)
+std::map<std::string, std::string> AbstractTable::getElement(int id)
 {
    auto command = fmt::format(sql_commands::findElementBasic, tableName, id);
    try
    {
       pqxx::work work(connection);
       pqxx::result result = work.exec(command.c_str());
+      std::map<std::string, std::string> elements;
+      for (auto const &key : tableRowElements)
+      {
+         elements[key] = result.at(0)[key].c_str();
+      }
 
-      return result.at(0);
+      return elements;
    }
    catch (const std::exception &error)
    {
@@ -64,4 +69,13 @@ void AbstractTable::performExecuteCommand(const std::string &command)
    pqxx::work work(connection);
    work.exec(command.c_str());
    work.commit();
+}
+
+void AbstractTable::setTableRowElement(const std::string &element)
+{
+   tableRowElements.insert(element);
+}
+void AbstractTable::setTableRowElement(const std::set &elements)
+{
+   tableRowElements = elements;
 }

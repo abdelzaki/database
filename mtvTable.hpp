@@ -13,17 +13,16 @@ public:
 
     void updateElement(int id, const std::string &value);
 
-    pqxx::row getElement(int id);
+    std::map<std::string key, std::string value> virtual getElement(int id) override;
 
-    void removeElement(int id);
+    void removeElement(int id) override;
 
     void deleteTable();
 
-    void performExecuteCommand(const std::string &command);
-
     virtual ~MtvTable();
 
-private:
+protected:
+    void performExecuteCommand(const std::string &command);
     MtvTable();
 };
 

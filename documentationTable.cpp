@@ -25,7 +25,7 @@ void DocumentationTable::updateElement(int id, const std::string &name, const st
     performExecuteCommand(command);
 }
 
-pqxx::row DocumentationTable::getElement(int id)
+std::map<std::string key, std::string value> DocumentationTable::getElement(int id)
 {
     return AbstractTable::getElement(id);
 }

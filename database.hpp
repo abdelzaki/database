@@ -7,7 +7,7 @@
 /**
  *  @brief Diese Klasse ist ein Singleton und besitzt keine Kopier- oder Move-Konstruktoren.
  *  Um diese Klasse zu verwenden, muss die Methode "getInstance" aufgerufen werden.
- * Zum Beispiel: Database::getInstance().insertElement();
+ * Zum Beispiel: Database::getMtvTable().insertElement();
  */
 class Database
 {

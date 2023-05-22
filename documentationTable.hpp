@@ -3,6 +3,7 @@
 
 #pragma once
 #include <string>
+
 #include "abstractTable.hpp"
 
 class DocumentationTable : public AbstractTable
@@ -14,17 +15,16 @@ public:
 
     void updateElement(int id, const std::string &name, const std::string &date);
 
-    pqxx::row getElement(int id) override;
+    std::map<std::string key, std::string value> virtual getElement(int id) override;
 
     void removeElement(int id) override;
 
     void deleteTable() override;
 
-    void performExecuteCommand(const std::string &command);
-
     virtual ~DocumentationTable();
 
-private:
+protected:
+    void performExecuteCommand(const std::string &command);
     DocumentationTable();
 };
 
