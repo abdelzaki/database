@@ -13,6 +13,13 @@
  */
 class Database
 {
+    public:
+    /// @brief Enumeration für die Namen der Tabellen
+    enum class Tables
+    {
+        mtv,
+        documentation
+    };
 
 public:
     /* @brief
@@ -37,13 +44,7 @@ public:
     /// @brief Destruktor
     virtual ~Database();
 
-public:
-    /// @brief Enumeration für die Namen der Tabellen
-    enum class Tables
-    {
-        mtv,
-        documentation
-    };
+
 
 private:
     /// @brief Map für die Verbindungsnamen der Tabellen, Schlüssel ist der Enum Tables
