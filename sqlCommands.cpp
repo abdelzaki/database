@@ -7,7 +7,7 @@ std::string sql_commands::startConnectionDocumentation = "host=localhost port=54
 
 std::string sql_commands::createTableMtv = R"(CREATE TABLE IF NOT EXISTS {} (ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL);)";
 
-std::string sql_commands::clearTableinsertElementMtv = R"(INSERT INTO {} (ID,NAME) VALUES ({}, '{}');)";
+std::string sql_commands::insertElementMtv = R"(INSERT INTO {} (ID,NAME) VALUES ({}, '{}');)";
 
 std::string sql_commands::updateElementMtv = R"(UPDATE {}  set NAME = '{}'  WHERE ID={};)";
 
