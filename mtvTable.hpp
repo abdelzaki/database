@@ -41,23 +41,16 @@ public:
     /// @param elements: die Namen aller Tabellenzeilen
     void virtual setTableRowElement(const std::set<std::string> &elements) override;
 
-    /// @brief Methode zum Setzen des Benutzernamens und Passworts für die spätere Verbindung zur Datenbank
-    /// @param userName Benutzername
-    /// @param Password  Passwort
-    void virtual setConnectionData(std::string userName, std::string Password);
-
     /// @brief Destruktor
     virtual ~MtvTable();
 
 protected:
-    /// @brief Informationen zur Verbindung mit der Datenbank
-    std::string connectionData;
     /// @brief Methode zum Ausführen eines Befehls auf der Datenbank
     /// @param command Der Befehl als SQL-Befehl
     void performExecuteCommand(const std::string &command);
 
     /// @brief Konstruktor zum Herstellen einer Verbindung zur Datenbank
-    MtvTable();
+    MtvTable(std::string connectionData);
 };
 
 #endif

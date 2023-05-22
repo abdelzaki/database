@@ -4,7 +4,7 @@
 #include "sqlCommands.hpp"
 #include "mtvTable.hpp"
 
-MtvTable::MtvTable() : AbstractTable("MTV", connectionData)
+MtvTable::MtvTable(connectionData) : AbstractTable("MTV", connectionData)
 {
     pqxx::work work(connection);
     auto command = fmt::format(sql_commands::createTableMtv, tableName);
@@ -53,9 +53,4 @@ void MtvTable::setTableRowElement(const std::string &element)
 void MtvTable::setTableRowElement(const std::set<std::string> &elements)
 {
     AbstractTable::setTableRowElement(elements);
-}
-
-void MtvTable::setConnectionData(std::string userName, std::string Password)
-{
-    connectionData = fmt::format(sql_commands::startConnection, userName, Password);
 }

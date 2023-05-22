@@ -62,7 +62,7 @@ protected:
     void performExecuteCommand(const std::string &command);
 
     /// @brief Konstruktor zum Herstellen einer Verbindung zur Datenbank
-    DocumentationTable();
+    DocumentationTable(std::string connectionData);
 };
 
 #endif

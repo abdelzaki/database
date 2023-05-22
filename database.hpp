@@ -2,6 +2,8 @@
 #define database
 #pragma once
 
+#include <map>
+
 #include "mtvTable.hpp"
 #include "documentationTable.hpp"
 /**
@@ -25,9 +27,24 @@ public:
      * @return Ein Objekt, das mit der angegebenen Tabelle verknüpft ist.
      */
     static DocumentationTable &getDocumentationTable();
+
+    /// @brief Methode zum Setzen des Benutzernamens und Passworts für die spätere Verbindung zur Datenbank
+    /// @param userName Benutzername
+    /// @param Password  Passwort
+    void virtual setConnectionData(Tables connection, std::string userName, std::string Password);
+
+    enum class Tables
+    {
+        mtv,
+        documentation
+    };
+
     virtual ~Database();
 
 private:
+    /// @brief
+    std::map<Tables, std::string> connections;
+
     // Singelton Design pattern
     Database(Database &) = delete;
     Database(Database &&) = delete;

@@ -4,7 +4,7 @@
 #include "sqlCommands.hpp"
 #include "documentationTable.hpp"
 
-DocumentationTable::DocumentationTable() : AbstractTable("Documentation", connectionData)
+DocumentationTable::DocumentationTable(connectionData) : AbstractTable("Documentation", connectionData)
 {
     pqxx::work work(connection);
     auto command = fmt::format(sql_commands::createTableDocumentation, tableName);
