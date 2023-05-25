@@ -2,7 +2,7 @@
 #include <fmt/core.h>
 #include <pqxx/pqxx>
 #include "sqlCommands.hpp"
-#include "mtvTable.hpp"
+#include "mtv_table.hpp"
 
 MtvTable::MtvTable(std::string connectionData) : AbstractTable("MTV", connectionData)
 {

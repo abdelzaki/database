@@ -1,26 +1,26 @@
 #include <fmt/core.h>
 #include "database.hpp"
-#include "sqlCommands.hpp"
+#include "sql_commands.hpp"
 
-std::map<Database::Tables, std::string> Database::connections;
+std::map<Database::Tables, std::string> Database::Connections;
 
 MtvTable &Database::getMtvTable()
 {
-    static MtvTable mtvTable(connections[Tables::mtv]);
+    static MtvTable mtvTable(Connections[Tables::MTV]);
 
     return mtvTable;
 }
 
 DocumentationTable &Database::getDocumentationTable()
 {
-    static DocumentationTable documentaionTable(connections[Tables::documentation]);
+    static DocumentationTable documentaionTable(Connections[Tables::DOCUMENTATION]);
 
     return documentaionTable;
 }
 
 void Database::setConnectionData(Tables connection, std::string userName, std::string Password)
 {
-    connections[connection] = fmt::format(sql_commands::startConnection, userName, Password).c_str();
+    Connections[connection] = fmt::format(sql_commands::startConnection, userName, Password).c_str();
 }
 
 Database::~Database() {}

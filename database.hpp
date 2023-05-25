@@ -1,27 +1,59 @@
-#ifndef database
-#define database
+/*!
+*************************************************************************
+* @file database.hpp
+*
+* Klasse für eine database, der über das iUZ-Protokoll kommuniziert.
+*************************************************************************
+* \copyright &copy; 2023 PINTSCH GmbH
+*************************************************************************
+*/
+
+#ifndef DATABASE
+#define DATABASE
 #pragma once
 
 #include <map>
-#include "mtvTable.hpp"
-#include "documentationTable.hpp"
+#include "mtv_table.hpp"
+#include "documentation_table.hpp"
 
 /**
- *  @brief Diese Klasse ist ein Singleton und besitzt keine Kopier- oder Move-Konstruktoren.
- *  Um diese Klasse zu verwenden, muss die Methode "getInstance" aufgerufen werden.
- * Zum Beispiel: Database::getMtvTable().insertElement();
+ * @brief Die Klasse ist für die Herstellung einer Verbindung zur richtigen Datenbank mit Benutzername und Passwort verantwortlich.
+Diese Klasse ist ein Singleton und besitzt keine Kopier- oder Move-Konstruktoren.
+Alle Methoden sind statisch und können nur über den Klassennamen aufgerufen werden z.B Database::setConnectionData(....);
+Um Operationen auf einer bestimmten Tabelle durchzuführen, muss zuerst eine Verbindungsdaten übergeben werden
+Die entsprechende Tabelle sollte vor jeder Operation aufgerufen werden, z.B. Database::getMtvTable().insertElement(key, value).
+
+Beispiel für die Verwendung der Klasse IuzTcpClient:
+\code
+Database::setConnectionData(Database::Tables::documentation,"Serves1", "ServesPintsch");
+Database::getDocumentationTable().setTableRowElement("NAME");
+Database::getDocumentationTable().insertElement(key, "12");
+ \endcode
  */
 class Database
 {
-    public:
+public:
     /// @brief Enumeration für die Namen der Tabellen
     enum class Tables
     {
-        mtv,
-        documentation
+        MTV,
+        DOCUMENTATION
     };
 
+private:
+    /// @brief Map für die Verbindungsnamen der Tabellen, Schlüssel ist der Enum Tables
+    static std::map<Tables, std::string> connections;
+
+    // Singelton Design pattern
+    Database(Database &) = delete;
+    Database(Database &&) = delete;
+    Database &operator=(Database const &) = delete;
+    Database &operator=(Database const &&) = delete;
+
 public:
+    /// @brief Destruktor
+    virtual ~Database();
+
     /* @brief
      * Diese Methode konstruiert ein Objekt,
      * das mit der MTV Tabelle verknüpft ist und gibt dieses Objekt zurück.
@@ -40,21 +72,6 @@ public:
     /// @param userName Benutzername
     /// @param Password  Passwort
     void static setConnectionData(Tables connection, std::string userName, std::string Password);
-
-    /// @brief Destruktor
-    virtual ~Database();
-
-
-
-private:
-    /// @brief Map für die Verbindungsnamen der Tabellen, Schlüssel ist der Enum Tables
-    static std::map<Tables, std::string> connections;
-
-    // Singelton Design pattern
-    Database(Database &) = delete;
-    Database(Database &&) = delete;
-    Database &operator=(Database const &) = delete;
-    Database &operator=(Database const &&) = delete;
 };
 
 #endif

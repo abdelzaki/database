@@ -1,5 +1,5 @@
-#ifndef sqlCommands
-#define sqlCommands
+#ifndef SQL_COMMANDS
+#define SQL_COMMANDS
 #pragma once
 
 #include <string>

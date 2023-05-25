@@ -1,8 +1,8 @@
 
 #include <fmt/core.h>
 #include <pqxx/pqxx>
-#include "sqlCommands.hpp"
-#include "documentationTable.hpp"
+#include "sql_commands.hpp"
+#include "documentation_table.hpp"
 
 DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTable("Documentation", connectionData)
 {
@@ -56,8 +56,3 @@ void DocumentationTable::setTableRowElement(const std::set<std::string> &element
 
 DocumentationTable::~DocumentationTable() {}
 
-void DocumentationTable::setConnectionData(std::string userName, std::string Password)
-{
-
-    connectionData = fmt::format(sql_commands::startConnection, userName, Password);
-}

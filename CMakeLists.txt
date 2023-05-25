@@ -1,27 +1,38 @@
-cmake_minimum_required(VERSION 3.2.1)
-project(database)
+set(TARGET_NAME "Database")
+add_library(${TARGET_NAME} "")
 include(FetchContent)
-FetchContent_Declare(
-    fmt
-    GIT_REPOSITORY https://github.com/fmtlib/fmt
-    GIT_TAG 10.0.0
-    GIT_SHALLOW TRUE)
-    FetchContent_MakeAvailable(fmt)
-
-
-FetchContent_Declare(
-  libpqxx
-  GIT_REPOSITORY https://github.com/jtv/libpqxx.git
-  GIT_TAG 7.7.5
-  GIT_SHALLOW TRUE
+target_sources(${TARGET_NAME}
+PRIVATE
+    abstract_table.cpp
+    database.cpp
+    documentation_table.cpp
+    mtv_table.cpp
+    sql_commands.cpp
+    PUBLIC
+        ${CMAKE_CURRENT_LIST_DIR}/abstract_table.hpp
+        ${CMAKE_CURRENT_LIST_DIR}/database.hpp
+        ${CMAKE_CURRENT_LIST_DIR}/documentation_table.hpp
+        ${CMAKE_CURRENT_LIST_DIR}/mtv_table.hpp
+        ${CMAKE_CURRENT_LIST_DIR}/sql_commands.hpp
 )
-#set(PQXX_LIBRARIES pqxx_static)
-
-FetchContent_MakeAvailable(libpqxx)
 
 
 
-add_executable(${PROJECT_NAME} main.cpp database.cpp sqlCommands.cpp abstractTable.cpp mtvTable.cpp documentationTable.cpp)
-target_link_libraries(${PROJECT_NAME} PUBLIC fmt::fmt  -lpqxx)
-target_include_directories(${PROJECT_NAME}  PUBLIC ./)
-target_include_directories(${PROJECT_NAME}  PUBLIC ./)
+
+target_link_libraries(${TARGET_NAME} PRIVATE fmt::fmt  -lpqxx)
+
+target_include_directories(${TARGET_NAME}
+    PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}
+        ${CMAKE_SOURCE_DIR}/src/libUtilities
+)
+
+
+
+target_compile_options(${TARGET_NAME}
+    PRIVATE
+        -Wall
+        -Wextra
+        -Wconversion
+        -Wsign-conversion
+)
