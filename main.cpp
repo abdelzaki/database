@@ -10,8 +10,8 @@
 int main()
 {
   int key{228};
-  Database::setConnectionData(Database::Tables::documentation,"tuser", "linuxc");
-  Database::setConnectionData(Database::Tables::mtv,"tuser", "linuxc");
+  Database::setConnectionData(Database::Tables::DOCUMENTATION ,"tuser", "linuxc");
+  Database::setConnectionData(Database::Tables::MTV,"tuser", "linuxc");
 
   auto &refMtv = Database::getMtvTable();
   auto &refDocu = Database::getDocumentationTable();
