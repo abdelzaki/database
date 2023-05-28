@@ -34,7 +34,8 @@ Beispiel für die Verwendung der Klasse abstractTable
  */
 class AbstractTable
 {
-   using elementsVector = std::vector<std::map<std::string, std::string>>;
+   using elementAsMap = std::map<std::string, std::string>;
+   using vectorOfElementsAsMap = std::vector<elementMap>;
 
 protected:
    //! @brief Name der Tabelle
@@ -83,10 +84,17 @@ public:
     * @param id Der Schlüssel des Elements
     * @retval Eine std::map, die die gesamte Zeile mit den entsprechenden Schlüssel-Wert-Paaren
     */
-   elementsVector virtual getElement(std::string attribute, std::string compare, std::string value);
+   vectorOfElementsAsMap virtual getElement(std::string attribute, std::string compare, std::string value);
 
 
-   std::map<std::string, std::string> virtual getMinAttribute(std::string attribute, std::string compare, std::string value);
+   vectorOfElementsAsMap virtual getMinAttribute(std::string attribute, std::string compare, std::string value);
+
+   /// @brief 
+   /// @param attribute 
+   /// @param compare 
+   /// @param value 
+   /// @return 
+   vectorOfElementsAsMap virtual getMaxAttribute(std::string attribute, std::string compare, std::string value);
 
    /**
     * @brief Methode zum Löschen eines Elements in der Datenbank

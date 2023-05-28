@@ -40,5 +40,9 @@ namespace sql_commands
   /// @brief Befehl zum Löschen  aller Elemente in der Datenbank
   extern std::string clearTable;
 
+  extern std::string maxAttribute;
+
+  extern std::string minAttribute;
+
 };
 #endif

@@ -25,9 +25,9 @@ void DocumentationTable::updateElement(int id, const std::string &name, const st
     executeCommand(command);
 }
 
-std::map<std::string, std::string> DocumentationTable::getElement(int id)
+std::map<std::string, std::string> DocumentationTable::getElementById(int id)
 {
-    return AbstractTable::getElement(id);
+    return AbstractTable::getElement("TEXT_ID","=",id);
 }
 
 void DocumentationTable::removeElement(int id)

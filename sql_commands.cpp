@@ -24,3 +24,7 @@ std::string sql_commands::insertElementDocumentation = R"(INSERT INTO {} (ID,NAM
 
 
 std::string sql_commands::updateElementDocumentation = R"(UPDATE {}  set NAME = '{}', DATE = '{}' WHERE ID={};)";
+
+std::string sql_commands:: minAttribute =  R"(SELECT MIN({}) AS minAttribute from {} WHERE {} {} {};)";
+
+std::string sql_commands:: maxAttribute =  R"(SELECT MAX({}) AS maxattribute from {} WHERE {} {} {};)";

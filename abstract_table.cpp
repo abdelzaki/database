@@ -20,13 +20,25 @@ void AbstractTable::updateElement(int id, const std::string &value)
    executeCommand(command);
 }
 
-std::map<std::string, std::string> AbstractTable::getElement(std::string attribute, std::string compare, std::string value)
+vectorOfElementsAsMap AbstractTable::getElement(std::string attribute, std::string compare, std::string value)
 {
    auto command = fmt::format(sql_commands::findElement, TableName, attribute, compare, value);
-   executeGetCommand(command)
+   return executeGetCommand(command)
 
 }
 
+vectorOfElementsAsMap AbstractTable::getMinAttribute(std::string attribute, std::string compare, std::string value)
+
+{
+   auto command = fmt::format(sql_commands::minAttribute,attribute,TableName,attribute, compare, value);
+   return executeGetCommand(command)
+}
+
+vectorOfElementsAsMap AbstractTable::getMaxAttribute(std::string attribute, std::string compare, std::string value)
+{
+   auto command = fmt::format(sql_commands::maxAttribute,attribute,TableName,attribute, compare, value);
+   return executeGetCommand(command)
+}
 
 void AbstractTable::removeElement(int id)
 {
@@ -47,17 +59,21 @@ void AbstractTable::executeCommand(const std::string &command)
    work.commit();
 }
 
- elementsVector AbstractTable::executeGetCommand(const std::string &command)
+vectorOfElementsAsMap AbstractTable::executeGetCommand(const std::string &command)
 {
-   elementsVector elements;
+   vectorOfElementsAsMap elements;
+   elementAsMap element;
    try
    {
       pqxx::work work(Connection);
       pqxx::result result = work.exec(command.c_str());
-
-      for (auto const &key : TableRowElements)
+      for (pqxx::result::const_iterator row = result.begin(); row != result.end(); ++row)
       {
-         elements[key] = result.at(0)[key].c_str();
+         for (auto const &key : TableRowElements)
+         {
+            element[key] = result.at(0)[key].c_str();
+         }
+         elements.push_back(element);
       }
    }
    catch (const std::exception &error)
