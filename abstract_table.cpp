@@ -29,17 +29,25 @@ vectorOfElementsAsMap AbstractTable::getElement(std::string attribute, std::stri
    return executeGetCommand(command);
 }
 
-int AbstractTable::getMinAttribute(int attribute)
+int AbstractTable::getMinAttribute(std::string attribute )
 
 {
-   auto command = fmt::format(sql_commands::minAttribute, int attribute);
-   return executeGetCommand(command);
+   auto command = fmt::format(sql_commands::minAttribute, attribute, TableName);
+   pqxx::work work(Connection);
+   pqxx::result result = work.exec(command.c_str());
+   if (result[0][0].is_null())
+      return 0; 
+   return result[0][0].as<int>();
 }
 
-int AbstractTable::getMaxAttribute(int attribute)
+int AbstractTable::getMaxAttribute(std::string attribute )
 {
-   auto command = fmt::format(sql_commands::maxAttribute, int attribute);
-   return executeGetCommand(command);
+   auto command = fmt::format(sql_commands::maxAttribute,attribute, TableName);
+      pqxx::work work(Connection);
+   pqxx::result result = work.exec(command.c_str());
+   if (result[0][0].is_null())
+      return 0; 
+   return result[0][0].as<int>();
 }
 
 void AbstractTable::removeElement(int id)

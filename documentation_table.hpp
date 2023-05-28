@@ -38,7 +38,7 @@ public:
     /// @param id Der Schlüssel des Elements
     /// @param name Name des Elements
     /// @param date Datum des Elements
-    void insertElement(const std::string &name, const std::string &date);
+    void insertElement(const std::string &date);
 
     /// @brief Methode zum Lesen der Werte einer Zeile (Row) in der Datenbank
     /// @param id Der Schlüssel des Elements
@@ -53,6 +53,8 @@ public:
     std::map<std::string, std::string> virtual getElementById(std::string id);
 
     int virtual getMinId();
+
+    int virtual getMaxId();
 
     /// @brief Methode zum Löschen eines Elements in der Datenbank
     /// @param id Der Schlüssel des Elements, das gelöscht werden so

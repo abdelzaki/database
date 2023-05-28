@@ -87,9 +87,9 @@ public:
     */
    vectorOfElementsAsMap virtual getElement(std::string attribute, std::string compare, std::string value);
 
-   int virtual getMinAttribute(int attribute);
+   int virtual getMinAttribute(std::string attribute);
 
-   int virtual getMaxAttribute(int attribute);
+   int virtual getMaxAttribute(std::string attribute);
 
    /**
     * @brief Methode zum Löschen eines Elements in der Datenbank

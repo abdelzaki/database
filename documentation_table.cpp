@@ -1,4 +1,5 @@
 
+#include <iostream>
 #include <sstream>
 #include <fmt/core.h>
 #include <pqxx/pqxx>
@@ -14,12 +15,17 @@ DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTab
 }
 
 void DocumentationTable::insertElement(const std::string &date)
-{
-    int id = getMinId();
+{ std::cout << " before getMinId(); \n";
+    int id = getMaxId();
+    std::cout << " getMinId(); \n";
     id++;
+    std::cout<< " iD  = " << id << " \n";
     auto command = fmt::format(sql_commands::insertElementDocumentation, TableName, id, date);
-
+    std::cout << " sql_commands::insertElementDocumentation \n";
     executeCommand(command);
+    std::cout << " command 1 \n";
+    int x;
+
 }
 
 void DocumentationTable::updateElement(int id, const std::string &date)
@@ -41,6 +47,12 @@ std::map<std::string, std::string> DocumentationTable::getElementById(std::strin
 int DocumentationTable::getMinId()
 {
     return AbstractTable::getMinAttribute("TEXT_ID");
+}
+
+
+int DocumentationTable::getMaxId()
+{
+    return AbstractTable::getMaxAttribute("TEXT_ID");
 }
 
 void DocumentationTable::removeElement(int id)

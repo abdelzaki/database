@@ -9,7 +9,7 @@
 
 int main()
 {
-  int key = 5;
+  int key = 2;
   Database::setConnectionData(Database::Tables::DOCUMENTATION ,"tuser", "linuxc");
   //Database::setConnectionData(Database::Tables::MTV,"tuser", "linuxc");
 
@@ -22,6 +22,7 @@ int main()
 
   //refMtv.insertElement(key, "12");
   refDocu.insertElement("21");
+  std::cout << "ff ";
 
   //std::cout << "element after insert mtv = " << refMtv.getElement(key)["NAME"].c_str() << " \n";
   std::cout << "element after insert Documentation = " << refDocu.getElementById(key)["TEXT_DATA"].c_str() << "  " << refDocu.getElementById(key)["DATE"].c_str() << " \n";
