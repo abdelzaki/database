@@ -20,10 +20,25 @@ int main()
   refDocu.setTableRowElement("TEXT_ID");
   refDocu.setTableRowElement("ID");
 
-  //refMtv.insertElement(key, "12");
+  
   refDocu.insertElement("21");
-  std::cout << "ff ";
 
+  std::vector<std::map<std::string, std::string>> result = refDocu.getAllDeletedElements();
+  for(auto it : result){
+    for(auto itt : it){
+
+      std::cout<< itt.first << " " << itt.second << " \n";
+    }
+  }
+
+std::cout<< "------- \n";
+    std::vector<std::map<std::string, std::string>> result1 = refDocu.getAllElementsWithText();
+  for(auto it : result1){
+    for(auto itt : it){
+
+      std::cout<< itt.first << " " << itt.second << " \n";
+    }
+  }
   //std::cout << "element after insert mtv = " << refMtv.getElement(key)["NAME"].c_str() << " \n";
   std::cout << "element after insert Documentation = " << refDocu.getElementById(key)["TEXT_DATA"].c_str() << "  " << refDocu.getElementById(key)["DATE"].c_str() << " \n";
 

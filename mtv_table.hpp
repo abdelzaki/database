@@ -65,7 +65,7 @@ protected:
 
     /// @brief Methode zum Ausführen eines Befehls auf der Datenbank
     /// @param command Der Befehl als SQL-Befehl
-    void executeCommand(const std::string &command);
+    pqxx::result executeCommand(const std::string &command);
 };
 
 #endif

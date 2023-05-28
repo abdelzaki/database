@@ -52,8 +52,8 @@ public:
     std::map<std::string, std::string> virtual getElementById(int id);
     std::map<std::string, std::string> virtual getElementById(std::string id);
 
-    vectorOfElementsAsMapvirtual getAllElementsWithText();
-    vectorOfElementsAsMapvirtual getAllDeletedElements();
+    vectorOfElementsAsMap virtual getAllElementsWithText();
+    vectorOfElementsAsMap virtual getAllDeletedElements();
 
     int virtual getTableSize();
 
@@ -82,7 +82,7 @@ protected:
 
     /// @brief Methode zum Ausführen eines Befehls auf der Datenbank
     /// @param command Der Befehl als SQL-Befehl
-    void executeCommand(const std::string &command);
+    pqxx::result virtual executeCommand(const std::string &command);
 };
 
 #endif
