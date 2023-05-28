@@ -1,13 +1,13 @@
 
 #include <fmt/core.h>
 #include <pqxx/pqxx>
-#include "sqlCommands.hpp"
+#include "sql_commands.hpp"
 #include "mtv_table.hpp"
 
 MtvTable::MtvTable(std::string connectionData) : AbstractTable("MTV", connectionData)
 {
-    pqxx::work work(connection);
-    auto command = fmt::format(sql_commands::createTableMtv, tableName);
+    pqxx::work work(Connection);
+    auto command = fmt::format(sql_commands::createTableMtv, TableName);
     work.exec(command.c_str());
     work.commit();
 }

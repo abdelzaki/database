@@ -1,10 +1,12 @@
-TableName
+
 #include <iostream>
 #include <fmt/core.h>
 #include "sql_commands.hpp"
 #include "abstract_table.hpp"
+AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : TableName{table}, Connection(startConnection.c_str()) 
+{
 
-AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : TableName{table}, Connection(startConnection.c_str()) {}
+}
 
 void AbstractTable::insertElement(int id, const std::string &value)
 {
@@ -71,7 +73,9 @@ void AbstractTable::setTableRowElement(const std::string &element)
 }
 void AbstractTable::setTableRowElement(const std::set<std::string> &elements)
 {
-   tableRowElements = elements;
+   TableRowElements = elements;
 }
+
+
 
 AbstractTable::~AbstractTable() {}

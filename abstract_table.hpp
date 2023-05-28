@@ -44,7 +44,7 @@ protected:
    pqxx::connection Connection;
 
    //! @brief Namen der Tabellezeilen
-   std::set<std::string> ableRowElements;
+   std::set<std::string> TableRowElements;
 
 public:
    /**

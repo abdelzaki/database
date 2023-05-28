@@ -6,22 +6,22 @@
 
 DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTable("Documentation", connectionData)
 {
-    pqxx::work work(connection);
-    auto command = fmt::format(sql_commands::createTableDocumentation, tableName);
+    pqxx::work work(Connection);
+    auto command = fmt::format(sql_commands::createTableDocumentation, TableName);
     work.exec(command.c_str());
     work.commit();
 }
 
 void DocumentationTable::insertElement(int id, const std::string &name, const std::string &date)
 {
-    auto command = fmt::format(sql_commands::insertElementDocumentation, tableName, id, name, date);
+    auto command = fmt::format(sql_commands::insertElementDocumentation, TableName, id, name, date);
 
     executeCommand(command);
 }
 
 void DocumentationTable::updateElement(int id, const std::string &name, const std::string &date)
 {
-    auto command = fmt::format(sql_commands::updateElementDocumentation, tableName, name, date, id);
+    auto command = fmt::format(sql_commands::updateElementDocumentation, TableName, name, date, id);
     executeCommand(command);
 }
 

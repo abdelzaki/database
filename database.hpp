@@ -42,7 +42,7 @@ public:
 
 private:
     /// @brief Map für die Verbindungsnamen der Tabellen, Schlüssel ist der Enum Tables
-    static std::map<Tables, std::string> connections;
+    static std::map<Tables, std::string> Connections;
 
     // Singelton Design pattern
     Database(Database &) = delete;
