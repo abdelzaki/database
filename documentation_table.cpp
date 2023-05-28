@@ -1,10 +1,11 @@
 
+#include <sstream>
 #include <fmt/core.h>
 #include <pqxx/pqxx>
 #include "sql_commands.hpp"
 #include "documentation_table.hpp"
 
-DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTable("Documentation", connectionData)
+DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTable("Documentation_t", connectionData)
 {
     pqxx::work work(Connection);
     auto command = fmt::format(sql_commands::createTableDocumentation, TableName);
@@ -12,22 +13,27 @@ DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTab
     work.commit();
 }
 
-void DocumentationTable::insertElement(int id, const std::string &name, const std::string &date)
+void DocumentationTable::insertElement(const std::string &name, const std::string &date)
 {
-    auto command = fmt::format(sql_commands::insertElementDocumentation, TableName, id, name, date);
+    auto command = fmt::format(sql_commands::insertElementDocumentation, TableName, name, date);
 
     executeCommand(command);
 }
 
-void DocumentationTable::updateElement(int id, const std::string &name, const std::string &date)
+void DocumentationTable::updateElement(int id,const std::string &date)
 {
-    auto command = fmt::format(sql_commands::updateElementDocumentation, TableName, name, date, id);
+    auto command = fmt::format(sql_commands::updateElementDocumentation, TableName, date, id);
     executeCommand(command);
 }
 
 std::map<std::string, std::string> DocumentationTable::getElementById(int id)
 {
-    return AbstractTable::getElement("TEXT_ID","=",id);
+    return AbstractTable::getElement("TEXT_ID","=",std::to_string(id))[0];
+}
+
+std::map<std::string, std::string> DocumentationTable::getElementById(std::string id)
+{
+    return AbstractTable::getElement("TEXT_ID","=",id)[0];
 }
 
 void DocumentationTable::removeElement(int id)

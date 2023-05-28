@@ -34,8 +34,10 @@ Beispiel für die Verwendung der Klasse abstractTable
  */
 class AbstractTable
 {
-   using elementAsMap = std::map<std::string, std::string>;
-   using vectorOfElementsAsMap = std::vector<elementMap>;
+
+   typedef std::map<std::string, std::string> elementAsMap;
+   typedef std::vector<elementAsMap> vectorOfElementsAsMap; 
+
 
 protected:
    //! @brief Name der Tabelle
@@ -130,7 +132,9 @@ protected:
     */
    void virtual executeCommand(const std::string &command) = 0;
 
-    std::map<std::string, std::string> virtual executeGetCommand(const std::string &command);
+   vectorOfElementsAsMap virtual executeGetCommand(const std::string &command);
 };
+
+
 
 #endif

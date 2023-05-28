@@ -3,6 +3,11 @@
 #include <fmt/core.h>
 #include "sql_commands.hpp"
 #include "abstract_table.hpp"
+
+
+typedef std::map<std::string, std::string> elementAsMap;
+typedef std::vector<elementAsMap> vectorOfElementsAsMap; 
+
 AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : TableName{table}, Connection(startConnection.c_str()) 
 {
 
@@ -23,7 +28,7 @@ void AbstractTable::updateElement(int id, const std::string &value)
 vectorOfElementsAsMap AbstractTable::getElement(std::string attribute, std::string compare, std::string value)
 {
    auto command = fmt::format(sql_commands::findElement, TableName, attribute, compare, value);
-   return executeGetCommand(command)
+   return executeGetCommand(command);
 
 }
 
@@ -31,13 +36,13 @@ vectorOfElementsAsMap AbstractTable::getMinAttribute(std::string attribute, std:
 
 {
    auto command = fmt::format(sql_commands::minAttribute,attribute,TableName,attribute, compare, value);
-   return executeGetCommand(command)
+   return executeGetCommand(command);
 }
 
 vectorOfElementsAsMap AbstractTable::getMaxAttribute(std::string attribute, std::string compare, std::string value)
 {
    auto command = fmt::format(sql_commands::maxAttribute,attribute,TableName,attribute, compare, value);
-   return executeGetCommand(command)
+   return executeGetCommand(command);
 }
 
 void AbstractTable::removeElement(int id)

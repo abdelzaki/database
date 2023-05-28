@@ -24,7 +24,7 @@ void MtvTable::updateElement(int id, const std::string &value)
 
 std::map<std::string, std::string> MtvTable::getElement(int id)
 {
-    return AbstractTable::getElement(id);
+    return AbstractTable::getElement("TEXT_ID","=",std::to_string(id))[0];
 }
 
 void MtvTable::removeElement(int id)
