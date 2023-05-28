@@ -27,8 +27,8 @@ class DocumentationTable : public AbstractTable
     /// @brief Definiert die Klasse Database als Friend-Klasse, damit Database den geschützten Konstruktor aufrufen kann
     friend class Database;
 
-    using elementAsMap = std::map<std::string, std::string>;
-    using vectorOfElementsAsMap = std::vector<elementAsMap>;
+    typedef std::map<std::string, std::string> elementAsMap;
+    typedef std::vector<elementAsMap> vectorOfElementsAsMap;
 
 public:
     /// @brief Destruktor
@@ -51,6 +51,11 @@ public:
     /// @return Eine std::map, die die gesamte Zeile mit den entsprechenden Schlüssel-Wert-Paaren
     std::map<std::string, std::string> virtual getElementById(int id);
     std::map<std::string, std::string> virtual getElementById(std::string id);
+
+    vectorOfElementsAsMapvirtual getAllElementsWithText();
+    vectorOfElementsAsMapvirtual getAllDeletedElements();
+
+    int virtual getTableSize();
 
     int virtual getMinId();
 

@@ -85,11 +85,13 @@ public:
     * @param id Der Schlüssel des Elements
     * @retval Eine std::map, die die gesamte Zeile mit den entsprechenden Schlüssel-Wert-Paaren
     */
-   vectorOfElementsAsMap virtual getElement(std::string attribute, std::string compare, std::string value);
+   vectorOfElementsAsMap virtual getElements(std::string attribute, std::string compare, std::string value);
 
    int virtual getMinAttribute(std::string attribute);
 
    int virtual getMaxAttribute(std::string attribute);
+
+   int virtual getTableSize();
 
    /**
     * @brief Methode zum Löschen eines Elements in der Datenbank
@@ -123,7 +125,7 @@ protected:
     *
     * @param command Der Befehl als SQL-Befehl
     */
-   void virtual executeCommand(const std::string &command) = 0;
+   pqxx::result virtual executeCommand(const std::string &command) = 0;
 
    vectorOfElementsAsMap virtual executeGetCommand(const std::string &command);
 };

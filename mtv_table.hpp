@@ -39,7 +39,7 @@ public:
     /// @brief Methode zum Lesen der Werte einer Zeile (Row) in der Datenbank
     /// @param id Der Schlüssel des Elements
     /// @return Eine std::map, die die gesamte Zeile mit den entsprechenden Schlüssel-Wert-Paaren
-    std::map<std::string, std::string> virtual getElement(int id);
+    std::map<std::string, std::string> virtual getElements(int id);
 
     /// @brief Methode zum Löschen eines Elements in der Datenbank
     /// @param id Der Schlüssel des Elements, das gelöscht werden so

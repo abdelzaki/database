@@ -32,7 +32,7 @@ namespace sql_commands
   extern std::string updateElementDocumentation;
 
   /// @brief Befehl zum Finden  eines Elements in der Datenbank
-  extern std::string findElement;
+  extern std::string getElement;
 
   /// @brief Befehl zum Löschen  eines Elements in der Datenbank
   extern std::string removeElement;
@@ -43,6 +43,8 @@ namespace sql_commands
   extern std::string maxAttribute;
 
   extern std::string minAttribute;
+
+  extern std::string getAllElements;
 
 };
 #endif

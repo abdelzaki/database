@@ -23,31 +23,37 @@ void AbstractTable::updateElement(int id, const std::string &value)
    executeCommand(command);
 }
 
-vectorOfElementsAsMap AbstractTable::getElement(std::string attribute, std::string compare, std::string value)
+vectorOfElementsAsMap AbstractTable::getElements(std::string attribute, std::string compare, std::string value)
 {
-   auto command = fmt::format(sql_commands::findElement, TableName, attribute, compare, value);
+   auto command = fmt::format(sql_commands::getElement, TableName, attribute, compare, value);
    return executeGetCommand(command);
 }
 
-int AbstractTable::getMinAttribute(std::string attribute )
+int AbstractTable::getMinAttribute(std::string attribute)
 
 {
    auto command = fmt::format(sql_commands::minAttribute, attribute, TableName);
    pqxx::work work(Connection);
    pqxx::result result = work.exec(command.c_str());
    if (result[0][0].is_null())
-      return 0; 
+      return 0;
    return result[0][0].as<int>();
 }
 
-int AbstractTable::getMaxAttribute(std::string attribute )
+int AbstractTable::getMaxAttribute(std::string attribute)
 {
-   auto command = fmt::format(sql_commands::maxAttribute,attribute, TableName);
-      pqxx::work work(Connection);
+   auto command = fmt::format(sql_commands::maxAttribute, attribute, TableName);
+   pqxx::work work(Connection);
    pqxx::result result = work.exec(command.c_str());
    if (result[0][0].is_null())
-      return 0; 
+      return 0;
    return result[0][0].as<int>();
+}
+
+int AbstractTable::getTableSize()
+{
+   auto command = fmt::format(sql_commands::getAllElements, TableName);
+   return executeCommand(command).size();
 }
 
 void AbstractTable::removeElement(int id)
@@ -62,11 +68,12 @@ void AbstractTable::clearTable()
    executeCommand(command);
 }
 
-void AbstractTable::executeCommand(const std::string &command)
+pqxx::result AbstractTable::executeCommand(const std::string &command)
 {
    pqxx::work work(Connection);
-   work.exec(command.c_str());
+   pqxx::result result = work.exec(command.c_str());
    work.commit();
+   return result;
 }
 
 vectorOfElementsAsMap AbstractTable::executeGetCommand(const std::string &command)
