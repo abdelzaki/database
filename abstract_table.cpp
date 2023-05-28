@@ -4,13 +4,11 @@
 #include "sql_commands.hpp"
 #include "abstract_table.hpp"
 
-
 typedef std::map<std::string, std::string> elementAsMap;
-typedef std::vector<elementAsMap> vectorOfElementsAsMap; 
+typedef std::vector<elementAsMap> vectorOfElementsAsMap;
 
-AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : TableName{table}, Connection(startConnection.c_str()) 
+AbstractTable::AbstractTable(const std::string &table, std::string &startConnection) : TableName{table}, Connection(startConnection.c_str())
 {
-
 }
 
 void AbstractTable::insertElement(int id, const std::string &value)
@@ -29,19 +27,18 @@ vectorOfElementsAsMap AbstractTable::getElement(std::string attribute, std::stri
 {
    auto command = fmt::format(sql_commands::findElement, TableName, attribute, compare, value);
    return executeGetCommand(command);
-
 }
 
-vectorOfElementsAsMap AbstractTable::getMinAttribute(std::string attribute, std::string compare, std::string value)
+int AbstractTable::getMinAttribute(int attribute)
 
 {
-   auto command = fmt::format(sql_commands::minAttribute,attribute,TableName,attribute, compare, value);
+   auto command = fmt::format(sql_commands::minAttribute, int attribute);
    return executeGetCommand(command);
 }
 
-vectorOfElementsAsMap AbstractTable::getMaxAttribute(std::string attribute, std::string compare, std::string value)
+int AbstractTable::getMaxAttribute(int attribute)
 {
-   auto command = fmt::format(sql_commands::maxAttribute,attribute,TableName,attribute, compare, value);
+   auto command = fmt::format(sql_commands::maxAttribute, int attribute);
    return executeGetCommand(command);
 }
 
@@ -96,7 +93,5 @@ void AbstractTable::setTableRowElement(const std::set<std::string> &elements)
 {
    TableRowElements = elements;
 }
-
-
 
 AbstractTable::~AbstractTable() {}

@@ -36,8 +36,7 @@ class AbstractTable
 {
 
    typedef std::map<std::string, std::string> elementAsMap;
-   typedef std::vector<elementAsMap> vectorOfElementsAsMap; 
-
+   typedef std::vector<elementAsMap> vectorOfElementsAsMap;
 
 protected:
    //! @brief Name der Tabelle
@@ -88,15 +87,9 @@ public:
     */
    vectorOfElementsAsMap virtual getElement(std::string attribute, std::string compare, std::string value);
 
+   int virtual getMinAttribute(int attribute);
 
-   vectorOfElementsAsMap virtual getMinAttribute(std::string attribute, std::string compare, std::string value);
-
-   /// @brief 
-   /// @param attribute 
-   /// @param compare 
-   /// @param value 
-   /// @return 
-   vectorOfElementsAsMap virtual getMaxAttribute(std::string attribute, std::string compare, std::string value);
+   int virtual getMaxAttribute(int attribute);
 
    /**
     * @brief Methode zum Löschen eines Elements in der Datenbank
@@ -134,7 +127,5 @@ protected:
 
    vectorOfElementsAsMap virtual executeGetCommand(const std::string &command);
 };
-
-
 
 #endif

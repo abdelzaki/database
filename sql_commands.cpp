@@ -22,9 +22,8 @@ std::string sql_commands::createTableDocumentation = R"(CREATE TABLE IF NOT EXIS
 
 std::string sql_commands::insertElementDocumentation = R"(INSERT INTO {} (TEXT_ID,TEXT_DATA) VALUES ({}, {});)";
 
-
 std::string sql_commands::updateElementDocumentation = R"(UPDATE {}  set TEXT_DATA = '{}' WHERE TEXT_ID={};)";
 
-std::string sql_commands:: minAttribute =  R"(SELECT MIN({}) AS minAttribute from {} WHERE {} {} {};)";
+std::string sql_commands::minAttribute = R"(SELECT MIN({}) AS minAttribute from {})";
 
-std::string sql_commands:: maxAttribute =  R"(SELECT MAX({}) AS maxattribute from {} WHERE {} {} {};)";
+std::string sql_commands::maxAttribute = R"(SELECT MAX({}) AS maxattribute from {};)";

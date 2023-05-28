@@ -28,7 +28,7 @@ class DocumentationTable : public AbstractTable
     friend class Database;
 
     using elementAsMap = std::map<std::string, std::string>;
-   using vectorOfElementsAsMap = std::vector<elementAsMap>;
+    using vectorOfElementsAsMap = std::vector<elementAsMap>;
 
 public:
     /// @brief Destruktor
@@ -51,6 +51,8 @@ public:
     /// @return Eine std::map, die die gesamte Zeile mit den entsprechenden Schlüssel-Wert-Paaren
     std::map<std::string, std::string> virtual getElementById(int id);
     std::map<std::string, std::string> virtual getElementById(std::string id);
+
+    int virtual getMinId();
 
     /// @brief Methode zum Löschen eines Elements in der Datenbank
     /// @param id Der Schlüssel des Elements, das gelöscht werden so

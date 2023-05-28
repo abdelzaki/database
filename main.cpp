@@ -21,7 +21,7 @@ int main()
   refDocu.setTableRowElement("ID");
 
   //refMtv.insertElement(key, "12");
-  refDocu.insertElement(std::to_string(key),  "21");
+  refDocu.insertElement("21");
 
   //std::cout << "element after insert mtv = " << refMtv.getElement(key)["NAME"].c_str() << " \n";
   std::cout << "element after insert Documentation = " << refDocu.getElementById(key)["TEXT_DATA"].c_str() << "  " << refDocu.getElementById(key)["DATE"].c_str() << " \n";

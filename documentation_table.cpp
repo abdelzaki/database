@@ -13,14 +13,16 @@ DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTab
     work.commit();
 }
 
-void DocumentationTable::insertElement(const std::string &name, const std::string &date)
+void DocumentationTable::insertElement(const std::string &date)
 {
-    auto command = fmt::format(sql_commands::insertElementDocumentation, TableName, name, date);
+    int id = getMinId();
+    id++;
+    auto command = fmt::format(sql_commands::insertElementDocumentation, TableName, id, date);
 
     executeCommand(command);
 }
 
-void DocumentationTable::updateElement(int id,const std::string &date)
+void DocumentationTable::updateElement(int id, const std::string &date)
 {
     auto command = fmt::format(sql_commands::updateElementDocumentation, TableName, date, id);
     executeCommand(command);
@@ -28,12 +30,17 @@ void DocumentationTable::updateElement(int id,const std::string &date)
 
 std::map<std::string, std::string> DocumentationTable::getElementById(int id)
 {
-    return AbstractTable::getElement("TEXT_ID","=",std::to_string(id))[0];
+    return AbstractTable::getElement("TEXT_ID", "=", std::to_string(id))[0];
 }
 
 std::map<std::string, std::string> DocumentationTable::getElementById(std::string id)
 {
-    return AbstractTable::getElement("TEXT_ID","=",id)[0];
+    return AbstractTable::getElement("TEXT_ID", "=", id)[0];
+}
+
+int DocumentationTable::getMinId()
+{
+    return AbstractTable::getMinAttribute("TEXT_ID");
 }
 
 void DocumentationTable::removeElement(int id)
@@ -61,4 +68,3 @@ void DocumentationTable::setTableRowElement(const std::set<std::string> &element
 }
 
 DocumentationTable::~DocumentationTable() {}
-
