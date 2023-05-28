@@ -18,26 +18,13 @@ void AbstractTable::updateElement(int id, const std::string &value)
    executeCommand(command);
 }
 
-std::map<std::string, std::string> AbstractTable::getElement(int id)
+std::map<std::string, std::string> AbstractTable::getElement(std::string attribute, std::string compare, std::string value)
 {
-   auto command = fmt::format(sql_commands::findElement, TableName, id);
-   try
-   {
-      pqxx::work work(Connection);
-      pqxx::result result = work.exec(command.c_str());
-      std::map<std::string, std::string> elements;
-      for (auto const &key : TableRowElements)
-      {
-         elements[key] = result.at(0)[key].c_str();
-      }
+   auto command = fmt::format(sql_commands::findElement, TableName, attribute, compare, value);
+   executeGetCommand(command)
 
-      return elements;
-   }
-   catch (const std::exception &error)
-   {
-      std::cerr << error.what() << std::endl;
-   }
 }
+
 
 void AbstractTable::removeElement(int id)
 {
@@ -56,6 +43,26 @@ void AbstractTable::executeCommand(const std::string &command)
    pqxx::work work(Connection);
    work.exec(command.c_str());
    work.commit();
+}
+
+ elementsVector AbstractTable::executeGetCommand(const std::string &command)
+{
+   elementsVector elements;
+   try
+   {
+      pqxx::work work(Connection);
+      pqxx::result result = work.exec(command.c_str());
+
+      for (auto const &key : TableRowElements)
+      {
+         elements[key] = result.at(0)[key].c_str();
+      }
+   }
+   catch (const std::exception &error)
+   {
+      std::cerr << error.what() << std::endl;
+   }
+   return elements;
 }
 
 void AbstractTable::setTableRowElement(const std::string &element)

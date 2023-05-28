@@ -9,13 +9,16 @@ std::string sql_commands::insertElementMtv = R"(INSERT INTO {} (ID,NAME) VALUES 
 
 std::string sql_commands::updateElementMtv = R"(UPDATE {}  set NAME = '{}'  WHERE ID={};)";
 
-std::string sql_commands::findElement = R"(SELECT * from {} WHERE ID={};)";
+std::string sql_commands::findElement = R"(SELECT * from {} WHERE {} {} {};)";
 
 std::string sql_commands::removeElement = R"(DELETE FROM {} WHERE ID={};)";
 
 std::string sql_commands::clearTable = R"(DELETE FROM {};)";
 
-std::string sql_commands::createTableDocumentation = R"(CREATE TABLE IF NOT EXISTS {} (ID INT PRIMARY KEY NOT NULL, NAME TEXT NOT NULL, DATE TEXT NOT NULL);)";
+std::string sql_commands::createTableDocumentation = R"(CREATE TABLE IF NOT EXISTS {} (
+                                                        ID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                                                        TEXT_ID INT NOT NULL UNIQUE, 
+                                                        TEXT_DATA TEXT NOT NULL);)";
 
 std::string sql_commands::insertElementDocumentation = R"(INSERT INTO {} (ID,NAME,DATE) VALUES ({}, '{}', '{}');)";
 

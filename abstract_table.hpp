@@ -15,6 +15,7 @@
 #include <string>
 #include <set>
 #include <map>
+#include <vector>
 
 #include <pqxx/pqxx>
 
@@ -33,6 +34,7 @@ Beispiel für die Verwendung der Klasse abstractTable
  */
 class AbstractTable
 {
+   using elementsVector = std::vector<std::map<std::string, std::string>>;
 
 protected:
    //! @brief Name der Tabelle
@@ -81,7 +83,10 @@ public:
     * @param id Der Schlüssel des Elements
     * @retval Eine std::map, die die gesamte Zeile mit den entsprechenden Schlüssel-Wert-Paaren
     */
-   std::map<std::string, std::string> virtual getElement(int id) = 0;
+   elementsVector virtual getElement(std::string attribute, std::string compare, std::string value);
+
+
+   std::map<std::string, std::string> virtual getMinAttribute(std::string attribute, std::string compare, std::string value);
 
    /**
     * @brief Methode zum Löschen eines Elements in der Datenbank
@@ -116,6 +121,8 @@ protected:
     * @param command Der Befehl als SQL-Befehl
     */
    void virtual executeCommand(const std::string &command) = 0;
+
+    std::map<std::string, std::string> virtual executeGetCommand(const std::string &command);
 };
 
 #endif
