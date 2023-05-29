@@ -88,7 +88,7 @@ vectorOfElementsAsMap AbstractTable::executeGetCommand(const std::string &comman
       {
          for (auto const &key : TableRowElements)
          {
-            element[key] = result.at(0)[key].c_str();
+            element[key] = row[key].c_str();
          }
          elements.push_back(element);
       }

@@ -11,7 +11,7 @@
 typedef std::map<std::string, std::string> elementAsMap;
 typedef std::vector<elementAsMap> vectorOfElementsAsMap;
 
-DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTable("Documentation_t", connectionData)
+DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTable("Documentation_tt", connectionData)
 {
     pqxx::work work(Connection);
     auto command = fmt::format(sql_commands::createTableDocumentation, TableName);
@@ -21,8 +21,12 @@ DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTab
 
 void DocumentationTable::insertElement(const std::string &date)
 {
-    auto command = fmt::format(sql_commands::insertElementDocumentation, TableName, getMaxId()++, date);
+    int id = getMaxId();
+    std::cout<< " max \n";
+    id++;
+    auto command = fmt::format(sql_commands::insertElementDocumentation, TableName, id, date);
     executeCommand(command);
+    std::cout<< " command \n";
 }
 
 void DocumentationTable::updateElement(int id, const std::string &date)
@@ -41,14 +45,14 @@ std::map<std::string, std::string> DocumentationTable::getElementById(std::strin
     return AbstractTable::getElements("TEXT_ID", "=", id)[0];
 }
 
-vectorOfElementsAsMapvirtual DocumentationTable::getAllElementsWithText()
+vectorOfElementsAsMap DocumentationTable::getAllElementsWithText()
 {
-    return AbstractTable::getElements("TEXT_DATA", "!=", "");
+    return AbstractTable::getElements("TEXT_DATA", "!=", "  ");
 }
 
-vectorOfElementsAsMapvirtual DocumentationTable::getAllDeletedElements()
+vectorOfElementsAsMap DocumentationTable::getAllDeletedElements()
 {
-    return AbstractTable::getElements("TEXT_DATA", "=", "");
+    return AbstractTable::getElements("TEXT_DATA", "=", " ");
 }
 
 int DocumentationTable::getTableSize()
@@ -68,7 +72,8 @@ int DocumentationTable::getMaxId()
 
 void DocumentationTable::removeElement(int id)
 {
-    auto command = fmt::format(sql_commands::updateElementDocumentation, TableName, "", id);
+    std::cout<< "remove \n";
+    auto command = fmt::format(sql_commands::updateElementDocumentation, TableName, " ", id);
     executeCommand(command);
 }
 
@@ -77,9 +82,9 @@ void DocumentationTable::clearTable()
     AbstractTable::clearTable();
 }
 
-void DocumentationTable::executeCommand(const std::string &command)
+pqxx::result DocumentationTable::executeCommand(const std::string &command)
 {
-    AbstractTable::executeCommand(command);
+    return AbstractTable::executeCommand(command);
 }
 
 void DocumentationTable::setTableRowElement(const std::string &element)

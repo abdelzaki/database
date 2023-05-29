@@ -9,7 +9,7 @@ std::string sql_commands::insertElementMtv = R"(INSERT INTO {} (ID,NAME) VALUES 
 
 std::string sql_commands::updateElementMtv = R"(UPDATE {}  set NAME = '{}'  WHERE ID={};)";
 
-std::string sql_commands::getElement = R"(SELECT * from {} WHERE {} {} {};)";
+std::string sql_commands::getElement = R"(SELECT * from {} WHERE {} {} '{}';)";
 
 std::string sql_commands::getAllElements = R"(SELECT * from {};)";
 
