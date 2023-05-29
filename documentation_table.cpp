@@ -11,7 +11,7 @@
 typedef std::map<std::string, std::string> elementAsMap;
 typedef std::vector<elementAsMap> vectorOfElementsAsMap;
 
-DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTable("Documentation_tt", connectionData)
+DocumentationTable::DocumentationTable(std::string connectionData) : AbstractTable("Documentation", connectionData)
 {
     pqxx::work work(Connection);
     auto command = fmt::format(sql_commands::createTableDocumentation, TableName);
@@ -47,7 +47,7 @@ std::map<std::string, std::string> DocumentationTable::getElementById(std::strin
 
 vectorOfElementsAsMap DocumentationTable::getAllElementsWithText()
 {
-    return AbstractTable::getElements("TEXT_DATA", "!=", "  ");
+    return AbstractTable::getElements("TEXT_DATA", "!=", " " );
 }
 
 vectorOfElementsAsMap DocumentationTable::getAllDeletedElements()

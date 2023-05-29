@@ -18,8 +18,7 @@ std::string sql_commands::removeElement = R"(DELETE FROM {} WHERE ID={};)";
 std::string sql_commands::clearTable = R"(DELETE FROM {};)";
 
 std::string sql_commands::createTableDocumentation = R"(CREATE TABLE IF NOT EXISTS {} (
-                                                        ID SERIAL PRIMARY KEY NOT NULL,
-                                                        TEXT_ID INT NOT NULL UNIQUE, 
+                                                        TEXT_ID INT PRIMARY KEY NOT NULL, 
                                                         TEXT_DATA TEXT NOT NULL);)";
 
 std::string sql_commands::insertElementDocumentation = R"(INSERT INTO {} (TEXT_ID,TEXT_DATA) VALUES ({}, {});)";
